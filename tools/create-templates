@@ -1,0 +1,20 @@
+#!/usr/bin/perl -w
+# This script is maintained by Rüdiger Beck
+# It is Free Software (License GPLv3)
+# If you find errors, contact the author
+# jeffbeck@web.de
+print "Creating templates from config\n";
+
+my $path_tmp="./problectix-exam-tmp";
+
+system("rm -rf $path_tmp");
+system("mkdir $path_tmp");
+
+# later list name of contents
+my $filename="bsz-mkk-T1";
+
+my $file_path_abs=$path_tmp."/".$filename."-counter.tex";
+open(FILE,">$file_path_abs") || die "Error: $!";
+print FILE "\\newcounter{testredcounter}\n";
+close(FILE);
+exit;
