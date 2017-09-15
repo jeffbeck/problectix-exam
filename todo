@@ -1,0 +1,9 @@
+# complete the ini
+# add counters with the ini
+# add a command to increase all counters by option
+\counterincrease{name}{num-increment}
+
+i.e.
+\counterincrease{TIME_TOTAL}{20}
+\counterincrease{HX}{1}
+...
