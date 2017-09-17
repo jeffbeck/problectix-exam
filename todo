@@ -1,9 +1,26 @@
-# complete the ini
-# add counters with the ini
-# add a command to increase all counters by option
-\counterincrease{name}{num-increment}
+rename name of template to bsz-mkk-T1 to bsz-mkk-exam
 
-i.e.
-\counterincrease{TIME_TOTAL}{20}
-\counterincrease{HX}{1}
-...
+make jefflatex recognise 
+
+add counters for thema
+
+increase them with command
+
+\examinfo{12}{ET}{WA}{HX}
+
+try to write a wrapper environment
+
+\begin{aufgabe}{Titel}
+
+--> \begin{examaufgabe}{Titel}{12}{ET}{WA}{HX}
+
+which:
+- increases the counters with \examinfo{12}{ET}{WA}{HX}
+- writes a new header with more Info (Time, ET/KT, Wahl/Pfichtaufgabe)
+- theme on draft mode
+- add stuff to tableofcontents
+
+add option final/draft or new otion to 
+
+\BTone{draft}
+\BTone{final}
