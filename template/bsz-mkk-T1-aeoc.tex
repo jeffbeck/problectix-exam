@@ -1,0 +1,84 @@
+\renewcommand{\mytemplate}{bsz-mkk-T1}
+
+% BT1 counters
+% total time counters
+\newcounter{TimeTotal}
+\newcounter{TimeTotalOK}% Minuten Gesamt
+
+\newcounter{TimeTotalET}
+\newcounter{TimeTotalETOK}% Minuten Elektrotechnik
+
+\newcounter{TimeTotalKT}
+\newcounter{TimeTotalKTOK}% Minuten Kältetechnik
+
+\newcounter{TimeTotalPF}
+\newcounter{TimeTotalPFOK}% Minuten Pflichtaufgaben
+
+\newcounter{TimeTotalWA}
+\newcounter{TimeTotalWAOK}% Minuten Wahlaufgaben
+
+\newcounter{TimeWAError}
+\newcounter{TimeWAErrorOK}
+\newcounter{TimeWAOK}
+\setcounter{TimeWAOK}{10}% Minuten einer Wahlaufgabe
+
+% other counters
+\newcounter{NumberTotalWA}
+\newcounter{NumberTotalWAOK}% Minuten Wahlaufgaben
+
+
+
+
+% setzen der Zähler mit ... \BTone oder \BTtwo
+\newcommand{\ExamWhich}{--- none ---}
+
+% Zähler für BT1
+\newcommand{\BTone}{
+\renewcommand{\ExamWhich}{\textbf{BT\,1}}
+\setcounter{TimeTotalOK}{130}% incl. aller Wahlaufgaben
+\setcounter{TimeTotalETOK}{0}
+\setcounter{TimeTotalKTOK}{130}
+\setcounter{TimeTotalWAOK}{30}
+\setcounter{TimeTotalPFOK}{100}
+\setcounter{NumberTotalWAOK}{3}
+\setcounter{TimeWAErrorOK}{0}
+}
+
+% Zähler für BT2
+\newcommand{\BTtwo}{
+\renewcommand{\ExamWhich}{\textbf{BT\,2}}
+\setcounter{TimeTotalOK}{130}
+\setcounter{TimeTotalETOK}{60}
+\setcounter{TimeTotalKTOK}{40}
+\setcounter{TimeTotalWAOK}{30}
+\setcounter{TimeTotalPFOK}{100}
+\setcounter{NumberTotalWAOK}{3}
+\setcounter{TimeWAErrorOK}{0}
+}
+
+
+
+
+
+% zusatzbefehl in aufgabenumgebung
+\newcounter{ExamInfo}
+\setcounter{ExamInfo}{0}
+\newcommand{\examinfo}[4]{
+% step a counter to check if this command is issued in every aufgabe
+\stepcounter{ExamInfo}
+% step other counters 
+%    time counter in min
+\addtocounter{TimeTotal}{#1}
+% KT or ET
+\ifthenelse{\equal{#2}{KT}}{\addtocounter{TimeTotalKT}{#1}}{} 
+\ifthenelse{\equal{#2}{ET}}{\addtocounter{TimeTotalET}{#1}}{} 
+%    WA or PF
+\ifthenelse{\equal{#3}{WA}}{\addtocounter{TimeTotalWA}{#1}}{} 
+% Minuten Wahlaufgaben OK 
+\ifthenelse{\equal{#3}{WA}}{%
+    \ifthenelse{\value{TimeWAOK}=#1}{}{\stepcounter{TimeWAError}}
+}{} 
+\ifthenelse{\equal{#3}{PF}}{\addtocounter{TimeTotalPF}{#1}}{} 
+%    topic counter
+
+}

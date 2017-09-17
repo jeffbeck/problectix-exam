@@ -13,6 +13,10 @@
 %% Preliminary declarations for options
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \LoadClass{article}
+\RequirePackage{ifthen}
+\RequirePackage[dvips]{color}
+\RequirePackage{etex}
+
 \newcommand{\myhappy}[1][]{%
    Happy #1
 }
@@ -25,10 +29,24 @@
 %% Options
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \DeclareOption*{%
-  %% Load AtEndOfClass - aeoc
-  \IfFileExists{\CurrentOption-counter.tex}
-  {\input{\CurrentOption-counter.tex}}%
-  {\PackageError{teacherexam}{Bad option: \CurrentOption}{the file \CurrentOption-counter.tex must exist to define your counters}}
+  %% Load at once
+  \typeout{* working on option \CurrentOption}
+  \IfFileExists{\CurrentOption-counter-begin.tex}
+               {\input{\CurrentOption-counter-begin.tex}%
+               }%
+               {\PackageError{teacherexam}%
+                    {Bad option: \CurrentOption}%
+                    {the file \CurrentOption-counter-begin.tex must exist to define your counters}%
+               }%
+  \typeout{* working on option \CurrentOption}
+  \IfFileExists{\CurrentOption-counter-end.tex}
+  {%
+    \expandafter\AtEndDocument\expandafter{%
+    \expandafter\inputOptionFile\expandafter{\CurrentOption-counter-end.tex}}
+  }%
+  {\PackageError{teacherexam}%
+                {Bad option: \CurrentOption}%
+                {the file \CurrentOption-counter-end.tex must exist to define your counters}}
 }
 
 \ProcessOptions\relax

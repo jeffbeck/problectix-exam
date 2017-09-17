@@ -13,8 +13,44 @@ system("mkdir $path_tmp");
 # later list name of contents
 my $filename="bsz-mkk-T1";
 
-my $file_path_abs=$path_tmp."/".$filename."-counter.tex";
-open(FILE,">$file_path_abs") || die "Error: $!";
+my $file_path_counter_begin=$path_tmp."/".$filename."-counter-begin.tex";
+open(FILE,">$file_path_counter_begin") || die "Error: $!";
 print FILE "\\newcounter{testredcounter}\n";
+print FILE "\\newcounter{testredcounter_ok}\n";
+print FILE "\\setcounter{testredcounter_ok}{1}\n";
 close(FILE);
-exit;
+
+my $file_path_counter_end=$path_tmp."/".$filename."-counter-end.tex";
+open(FILE,">$file_path_counter_end") || die "Error: $!";
+print FILE "testredcounter \\thetestredcounter}\n";
+close(FILE);
+
+
+
+
+my $file_path_abd=$path_tmp."/".$filename."-abd.tex";
+open(FILE,">$file_path_abd") || die "Error: $!";
+print FILE "\\newcounter{testredcounter}\n";
+print FILE "\\newcounter{testredcounter_ok}\n";
+print FILE "\\setcounter{testredcounter_ok}{1}\n";
+print FILE "\\aufgabenmarkesetzen%\n";
+close(FILE);
+
+
+my $file_path_aed=$path_tmp."/".$filename."-aed.tex";
+open(FILE,">$file_path_aed") || die "Error: $!";
+print FILE "testredcounter \\thetestredcounter\n";
+close(FILE);
+
+
+my $file_path_aeoc=$path_tmp."/".$filename."-aeoc.tex";
+open(FILE,">$file_path_aeoc") || die "Error: $!";
+print FILE "\\renewcommand{\\mytemplate}{bsz-mkk-T1}\n";
+close(FILE);
+
+
+
+
+############################################################
+# sub
+############################################################
