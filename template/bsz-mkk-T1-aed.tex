@@ -1,5 +1,3 @@
-% newpage and the rest if in draft mode only
-%\newpage
 \newcounter{aufgabenanzahl}
 % calculate numer of problems issud
 \setcounter{aufgabenanzahl}{\theaufgabennummer-1}
@@ -13,22 +11,25 @@
                                  #1 \\ \hline}
 
 
+% printout in draft mode
+\ifthenelse{\value{ModeFinal}=1}{}{% doing nothing on final
+%\newpage
 
-% printout
-Resulting counters for \ExamWhich:
+\textbf{Resulting counters for }\ExamWhich:
 
 \bigskip
 
    \renewcommand{\arraystretch}{1.25}
      \begin{tabular}{|l|r|r|l|} \hline
        Beschreibung (Zeit in Minuten) & Sollwert & Istwert & Zähler-Name\\ \hline\hline
-       \countertabline{TimeTotal}{\theTimeTotalOK}{\theTimeTotal}{Gesamtzeit in Minuten \ExamWhich}
-       \countertabline{TimeTotalKT}{\theTimeTotalKTOK}{\theTimeTotalKT}{Gesamtzeit KT in Minuten \ExamWhich}
-       \countertabline{TimeTotalET}{\theTimeTotalETOK}{\theTimeTotalET}{Gesamtzeit ET in Minuten \ExamWhich}
-       \countertabline{TimeTotalPF}{\theTimeTotalPFOK}{\theTimeTotalPF}{Gesamtzeit PF in \ExamWhich}
-       \countertabline{TimeTotalWA}{\theTimeTotalWAOK}{\theTimeTotalWA}{Gesamtzeit WA in \ExamWhich}
-       \countertabline{TimeWAError}{\theTimeWAErrorOK}{\theTimeWAError}{WA nicht \theTimeWAOK{} Minuten in \ExamWhich}
+       \countertabline{TimeTotal}{\theTimeTotalOK}{\theTimeTotal}{Gesamtzeit \ExamWhich}
+       \countertabline{TimeTotalKT}{\theTimeTotalKTOK}{\theTimeTotalKT}{Gesamtzeit KT (Kältetechnik) \ExamWhich}
+       \countertabline{TimeTotalET}{\theTimeTotalETOK}{\theTimeTotalET}{Gesamtzeit ET (Elektrotechnik) \ExamWhich}
+       \countertabline{TimeTotalPF}{\theTimeTotalPFOK}{\theTimeTotalPF}{Gesamtzeit PF (Pflichtbereich) in \ExamWhich}
+       \countertabline{TimeTotalWA}{\theTimeTotalWAOK}{\theTimeTotalWA}{Gesamtzeit WA (Wahlbereich) \ExamWhich}
+       \countertabline{TimeWAError}{\theTimeWAErrorOK}{\theTimeWAError}{WA-Aufgabe nicht \theTimeWAOK{} Minuten in \ExamWhich}
        \countertabline{NumberTotalWAOK}{\theNumberTotalWAOK}{\theNumberTotalWA}{Anzahl Wahlaufgaben in \ExamWhich}
        \countertabline{ExamInfo}{\theaufgabenanzahl}{\theExamInfo}{\theaufgabenanzahl{} Aufgaben mit \theExamInfo{} Zusatzinfos}
      \end{tabular}
    \renewcommand{\arraystretch}{1.0}
+}%

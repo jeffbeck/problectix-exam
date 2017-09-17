@@ -1,5 +1,7 @@
 \renewcommand{\mytemplate}{bsz-mkk-T1}
 
+\newcounter{ModeFinal}
+
 % BT1 counters
 % total time counters
 \newcounter{TimeTotal}
@@ -33,7 +35,8 @@
 \newcommand{\ExamWhich}{--- none ---}
 
 % Zähler für BT1
-\newcommand{\BTone}{
+\newcommand{\BTone}[1]{
+\ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{} 
 \renewcommand{\ExamWhich}{\textbf{BT\,1}}
 \setcounter{TimeTotalOK}{130}% incl. aller Wahlaufgaben
 \setcounter{TimeTotalETOK}{0}
@@ -45,7 +48,8 @@
 }
 
 % Zähler für BT2
-\newcommand{\BTtwo}{
+\newcommand{\BTtwo}[1]{
+\ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{} 
 \renewcommand{\ExamWhich}{\textbf{BT\,2}}
 \setcounter{TimeTotalOK}{130}
 \setcounter{TimeTotalETOK}{60}
