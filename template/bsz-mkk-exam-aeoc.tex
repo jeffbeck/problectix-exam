@@ -29,12 +29,11 @@
 \newcounter{NumberTotalWAOK}% Minuten Wahlaufgaben
 
 
-% TopicCounter
-% TopicTOPICNAME
+% TopicTimeCounter
+% TopicTimeTOPICNAME
 % HX
-\newcounter{TopicHX}
-\newcounter{TopicHXMax}
-\newcounter{TopicHXMin}
+\newcounter{TopicTimeHX}
+\newcounter{TopicTimeHXMin}
 
 
 
@@ -54,9 +53,8 @@
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
 \setcounter{TimeWAErrorOK}{0}
-% Topic counters
-\newcounter{TopicHXMax}{0}
-\newcounter{TopicHXMin}{0}
+% TopicTime counters
+\setcounter{TopicTimeHXMin}{20}
 }
 
 
@@ -72,9 +70,8 @@
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
 \setcounter{TimeWAErrorOK}{0}
-% Topic counters
-\newcounter{TopicHXMax}{1}
-\newcounter{TopicHXMin}{1}
+% TopicTime counters
+\setcounter{TopicTimeHXMin}{20}
 }
 
 
@@ -100,6 +97,6 @@
     \ifthenelse{\value{TimeWAOK}=#1}{}{\stepcounter{TimeWAError}}
 }{} 
 \ifthenelse{\equal{#3}{PF}}{\addtocounter{TimeTotalPF}{#1}}{} 
-%    Topic counter
-\ifthenelse{\equal{#4}{HX}}{\stepcounter{TopicHX}}{} 
+%    TopicTime counter
+\ifthenelse{\equal{#4}{HX}}{\stepcounter{TopicTimeHX}}{} 
 }
