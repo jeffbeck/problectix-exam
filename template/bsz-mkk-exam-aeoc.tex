@@ -2,7 +2,7 @@
 
 \newcounter{ModeFinal}
 
-% BT1 counters
+% BT counters
 % total time counters
 \newcounter{TimeTotal}
 \newcounter{TimeTotalOK}% Minuten Gesamt
@@ -29,15 +29,24 @@
 \newcounter{NumberTotalWAOK}% Minuten Wahlaufgaben
 
 
+% TopicCounter
+% TopicTOPICNAME
+% HX
+\newcounter{TopicHX}
+\newcounter{TopicHXMax}
+\newcounter{TopicHXMin}
+
 
 
 % setzen der Zähler mit ... \BTone oder \BTtwo
 \newcommand{\ExamWhich}{--- none ---}
 
-% Zähler für BT1
+
+% Setze Zähler für BT1
 \newcommand{\BTone}[1]{
 \ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{} 
 \renewcommand{\ExamWhich}{\textbf{BT\,1}}
+% counters
 \setcounter{TimeTotalOK}{130}% incl. aller Wahlaufgaben
 \setcounter{TimeTotalETOK}{0}
 \setcounter{TimeTotalKTOK}{130}
@@ -45,12 +54,17 @@
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
 \setcounter{TimeWAErrorOK}{0}
+% Topic counters
+\newcounter{TopicHXMax}{0}
+\newcounter{TopicHXMin}{0}
 }
 
-% Zähler für BT2
+
+% Setze Zähler für BT2
 \newcommand{\BTtwo}[1]{
 \ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{} 
 \renewcommand{\ExamWhich}{\textbf{BT\,2}}
+% counters
 \setcounter{TimeTotalOK}{130}
 \setcounter{TimeTotalETOK}{60}
 \setcounter{TimeTotalKTOK}{40}
@@ -58,6 +72,9 @@
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
 \setcounter{TimeWAErrorOK}{0}
+% Topic counters
+\newcounter{TopicHXMax}{1}
+\newcounter{TopicHXMin}{1}
 }
 
 
@@ -83,6 +100,6 @@
     \ifthenelse{\value{TimeWAOK}=#1}{}{\stepcounter{TimeWAError}}
 }{} 
 \ifthenelse{\equal{#3}{PF}}{\addtocounter{TimeTotalPF}{#1}}{} 
-%    topic counter
-
+%    Topic counter
+\ifthenelse{\equal{#4}{HX}}{\stepcounter{TopicHX}}{} 
 }

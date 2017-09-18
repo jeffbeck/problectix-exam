@@ -2,13 +2,23 @@
 % calculate numer of problems issud
 \setcounter{aufgabenanzahl}{\theaufgabennummer-1}
 
-% Ausgabe einer Tabellenzeile
+% Ausgabe einer counter Tabellenzeile
 \newcommand{\countertabline}[4]{ #4 & 
                                  #2 & 
                                  \ifthenelse{\equal{#2}{#3}}%
                                             {\textcolor{gruen}{#3}}%
                                             {\textcolor{rot}{#3}} & 
                                  #1 \\ \hline}
+
+% Ausgabe einer counter Tabellenzeile
+\newcommand{\topictabline}[4]{ #5 & 
+                               #2 & 
+                               #3 & 
+                               #4 &
+%                               \ifthenelse{\equal{#2}{#3}}%
+%                                          {\textcolor{gruen}{#4}}%
+%                                          {\textcolor{rot}{#4}} & 
+                               #1 \\ \hline}
 
 
 % printout in draft mode
@@ -32,4 +42,17 @@
        \countertabline{ExamInfo}{\theaufgabenanzahl}{\theExamInfo}{\theaufgabenanzahl{} Aufgaben mit \theExamInfo{} Zusatzinfos}
      \end{tabular}
    \renewcommand{\arraystretch}{1.0}
+
+\textbf{Resulting counters for }\ExamWhich:
+
+\bigskip
+
+   \renewcommand{\arraystretch}{1.25}
+     \begin{tabular}{|l|r|r|l|} \hline
+       Beschreibung & Min & Max & Istwert & Zähler-Name\\ \hline\hline
+       \topictabline{TopicHX}{\theTopicHXMin}{\theTopicHXMax}{\theTopicHX}{Aufgaben hx-Diagramm}
+
+     \end{tabular}
+   \renewcommand{\arraystretch}{1.0}
+
 }%
