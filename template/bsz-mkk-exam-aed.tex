@@ -3,12 +3,18 @@
 \setcounter{aufgabenanzahl}{\theaufgabennummer-1}
 
 % Ausgabe einer counter Tabellenzeile
-\newcommand{\countertabline}[4]{ #4 & 
-                                 #2 & 
-                                 \ifthenelse{\equal{#2}{#3}}%
-                                            {\textcolor{gruen}{#3}}%
-                                            {\textcolor{rot}{#3}} & 
-                                 #1 \\ \hline}
+\newcommand{\counterequal}[4]{ #4 & 
+                               #2 & 
+                               \ifthenelse{\equal{#2}{#3}}%
+                                          {\textcolor{gruen}{#3}}%
+                                          {\textcolor{rot}{#3}} & 
+                               #1 \\ \hline}
+\newcommand{\countermin}[4]{ #4 & 
+                             #2 & 
+                             \ifthenelse{#3<#2}%
+                                        {\textcolor{rot}{#3}}%
+                                        {\textcolor{gruen}{#3}} & 
+                             #1 \\ \hline}
 
 
 % printout in draft mode
@@ -22,14 +28,16 @@
    \renewcommand{\arraystretch}{1.2}
      \begin{tabular}{|l|r|r|l|} \hline
        Beschreibung (Zeit in Minuten) & Sollwert & Istwert & Zähler-Name\\ \hline\hline
-       \countertabline{TimeTotal}{\theTimeTotalOK}{\theTimeTotal}{Gesamtzeit \ExamWhich}
-       \countertabline{TimeTotalKT}{\theTimeTotalKTOK}{\theTimeTotalKT}{Gesamtzeit KT (Kältetechnik) \ExamWhich}
-       \countertabline{TimeTotalET}{\theTimeTotalETOK}{\theTimeTotalET}{Gesamtzeit ET (Elektrotechnik) \ExamWhich}
-       \countertabline{TimeTotalPF}{\theTimeTotalPFOK}{\theTimeTotalPF}{Gesamtzeit PF (Pflichtbereich) in \ExamWhich}
-       \countertabline{TimeTotalWA}{\theTimeTotalWAOK}{\theTimeTotalWA}{Gesamtzeit WA (Wahlbereich) \ExamWhich}
-       \countertabline{TimeWAError}{\theTimeWAErrorOK}{\theTimeWAError}{WA-Aufgabe nicht \theTimeWAOK{} Minuten in \ExamWhich}
-       \countertabline{NumberTotalWAOK}{\theNumberTotalWAOK}{\theNumberTotalWA}{Anzahl Wahlaufgaben in \ExamWhich}
-       \countertabline{ExamInfo}{\theaufgabenanzahl}{\theExamInfo}{\theaufgabenanzahl{} Aufgaben mit \theExamInfo{} Zusatzinfos}
+       \counterequal{TimeTotal}{\theTimeTotalOK}{\theTimeTotal}{Gesamtzeit \ExamWhich}\hline
+       \counterequal{TimeTotalKT}{\theTimeTotalKTOK}{\theTimeTotalKT}{Gesamtzeit KT (Kältetechnik) \ExamWhich}
+       \counterequal{TimeTotalKL}{\theTimeTotalKLOK}{\theTimeTotalKL}{Gesamtzeit KL (Klimatechnik) \ExamWhich}
+       \counterequal{TimeTotalET}{\theTimeTotalETOK}{\theTimeTotalET}{Gesamtzeit ET (Elektrotechnik) \ExamWhich}\hline
+       \counterequal{TimeTotalPF}{\theTimeTotalPFOK}{\theTimeTotalPF}{Gesamtzeit PF (Pflichtbereich) in \ExamWhich}
+       \counterequal{TimeTotalWA}{\theTimeTotalWAOK}{\theTimeTotalWA}{Gesamtzeit WA (Wahlbereich) \ExamWhich}\hline
+       \counterequal{TimeWAError}{\theTimeWAErrorOK}{\theTimeWAError}{WA-Aufgabe nicht \theTimeWAOK{} Minuten in \ExamWhich}
+       \counterequal{NumberTotalWAOK}{\theNumberTotalWAOK}{\theNumberTotalWA}{Anzahl Wahlaufgaben in \ExamWhich}
+       \counterequal{ExamInfo}{\theaufgabenanzahl}{\theExamInfo}{\theaufgabenanzahl{} Aufgaben mit \theExamInfo{} Zusatzinfos}
+       \counterequal{NumberTopicsCounted}{\theaufgabenanzahl}{\theNumberTopicsCounted}{\theaufgabenanzahl{} Aufgaben mit Topic-Zähler  \theNumberTopicsCounted{}-mal erhöht}
      \end{tabular}
    \renewcommand{\arraystretch}{1.0}
 
@@ -43,34 +51,34 @@
      \begin{tabular}{|l|r|r|l|} \hline
        Beschreibung & MinMinutes & Istwert & Zähler-Name\\ \hline\hline
        \textbf{BT1/BT2 KT} &  & & \\ \hline\hline
-       \countertabline{TopicTimeHX}{\theTopicTimeHXMin}{\theTopicTimeHX}{\hxdia}
-       \countertabline{TopicTimeLOGPH}{\theTopicTimeLOGPHMin}{\theTopicTimeLOGPH}{\hlogpdia}
-       \countertabline{TopicTimeRI}{\theTopicTimeRIMin}{\theTopicTimeRI}{RI-Fließbild}
-       \countertabline{TopicTimeMOP}{\theTopicTimeMOPMin}{\theTopicTimeMOP}{MOP}
-       \countertabline{TopicTimeKTFUNKTION}{\theTopicTimeKTFUNKTIONMin}{\theTopicTimeKTFUNKTION}{Funktionsanalyse Kältetechnik}
-       \countertabline{TopicTimeWU}{\theTopicTimeWUMin}{\theTopicTimeWU}{Wärmeübertrager}
-       \countertabline{TopicTimeVERDICHTER}{\theTopicTimeVERDICHTERMin}{\theTopicTimeVERDICHTER}{Verdichter}
-       \countertabline{TopicTimeFEUCHTELUFT}{\theTopicTimeFEUCHTELUFTMin}{\theTopicTimeFEUCHTELUFT}{Feuchte Luft}
-       \countertabline{TopicTimeCOP}{\theTopicTimeCOPMin}{\theTopicTimeCOP}{COP-Wert}
-       \countertabline{TopicTimeKUEHLTURM}{\theTopicTimeKUEHLTURMMin}{\theTopicTimeKUEHLTURM}{Kühlturm}
-       \countertabline{TopicTimeROHRLEITUNG}{\theTopicTimeROHRLEITUNGMin}{\theTopicTimeROHRLEITUNG}{Rohrleitungen}\hline
+       \countermin{TopicTimeHLOGP}{\theTopicTimeHLOGPMin}{\theTopicTimeHLOGP}{\hlogpdia}
+       \countermin{TopicTimeHX}{\theTopicTimeHXMin}{\theTopicTimeHX}{\hxdia}
+       \countermin{TopicTimeRI}{\theTopicTimeRIMin}{\theTopicTimeRI}{RI-Fließbild}
+       \countermin{TopicTimeKTFUNKTION}{\theTopicTimeKTFUNKTIONMin}{\theTopicTimeKTFUNKTION}{Funktionsanalyse Kältetechnik}
+       \countermin{TopicTimeWU}{\theTopicTimeWUMin}{\theTopicTimeWU}{Wärmeübertrager}
+       \countermin{TopicTimeVERDICHTER}{\theTopicTimeVERDICHTERMin}{\theTopicTimeVERDICHTER}{Verdichter}
+       \countermin{TopicTimeLUFT}{\theTopicTimeLUFTMin}{\theTopicTimeLUFT}{Feuchte Luft}
+       \countermin{TopicTimeMOP}{\theTopicTimeMOPMin}{\theTopicTimeMOP}{MOP}
+       \countermin{TopicTimeCOP}{\theTopicTimeCOPMin}{\theTopicTimeCOP}{COP-Wert}
+       \countermin{TopicTimeKUEHLTURM}{\theTopicTimeKUEHLTURMMin}{\theTopicTimeKUEHLTURM}{Kühlturm}
+       \countermin{TopicTimeROHR}{\theTopicTimeROHRMin}{\theTopicTimeROHR}{Rohrleitungen}\hline
        \textbf{BT1/BT2 KT} &  & & \\ \hline\hline
-       \countertabline{TopicTimeSCHALTUNG}{\theTopicTimeSCHALTUNGMin}{\theTopicTimeSCHALTUNG}{Schaltungsanalyse ET}
-       \countertabline{TopicTimeSCHALTPLAN}{\theTopicTimeSCHALTPLANMin}{\theTopicTimeSCHALTPLAN}{Schaltplan ET}
-       \countertabline{TopicTimeMOTOR}{\theTopicTimeMOTORMin}{\theTopicTimeMOTOR}{Elektromotor ET}
-       \countertabline{TopicTimeDREHSTROM}{\theTopicTimeDREHSTROMMin}{\theTopicTimeDREHSTROM}{Drehstrom ET}
-       \countertabline{TopicTimeSTROMSCHUTZ}{\theTopicTimeSTROMSCHUTZMin}{\theTopicTimeSTROMSCHUTZ}{Schutz vor elektr. Strom ET}\hline
+       \countermin{TopicTimeSCHALTUNG}{\theTopicTimeSCHALTUNGMin}{\theTopicTimeSCHALTUNG}{Schaltungsanalyse ET}
+       \countermin{TopicTimeSCHALTPLAN}{\theTopicTimeSCHALTPLANMin}{\theTopicTimeSCHALTPLAN}{Schaltplan ET}
+       \countermin{TopicTimeMOTOR}{\theTopicTimeMOTORMin}{\theTopicTimeMOTOR}{Elektromotor ET}
+       \countermin{TopicTimeDREHSTROM}{\theTopicTimeDREHSTROMMin}{\theTopicTimeDREHSTROM}{Drehstrom ET}
+       \countermin{TopicTimeETSCHUTZ}{\theTopicTimeETSCHUTZMin}{\theTopicTimeETSCHUTZ}{Schutz vor elektr. Strom ET}\hline
        \textbf{ZP KT} &  & & \\ \hline\hline
-       \countertabline{TopicTimeKREISLAUF}{\theTopicTimeKREISLAUFMin}{\theTopicTimeKREISLAUF}{Kältekreislauf ZP}
-       \countertabline{TopicTimeDRUCKSCHALTER}{\theTopicTimeDRUCKSCHALTERMin}{\theTopicTimeDRUCKSCHALTER}{Druckschalter ZP}
-       \countertabline{TopicTimeREFRIGERANT}{\theTopicTimeREFRIGERANTMin}{\theTopicTimeREFRIGERANT}{Kältemittel ZP}
-       \countertabline{TopicTimeGESLAENGE}{\theTopicTimeGESLAENGEMin}{\theTopicTimeGESLAENGE}{Gestreckte Länge ZP}
-       \countertabline{TopicTimeISOMETRIE}{\theTopicTimeISOMETRIEMin}{\theTopicTimeISOMETRIE}{Isometrische Darstellung ZP}
-       \countertabline{TopicTimeWAERME}{\theTopicTimeWAERMEMin}{\theTopicTimeWAERME}{Wärmeübertragung ZP}\hline
+       \countermin{TopicTimeKREISLAUF}{\theTopicTimeKREISLAUFMin}{\theTopicTimeKREISLAUF}{Kältekreislauf ZP}
+       \countermin{TopicTimePRESSOSTAT}{\theTopicTimePRESSOSTATMin}{\theTopicTimePRESSOSTAT}{Druckschalter ZP}
+       \countermin{TopicTimeREFRIG}{\theTopicTimeREFRIGMin}{\theTopicTimeREFRIG}{Kältemittel ZP}
+       \countermin{TopicTimeGESLAENGE}{\theTopicTimeGESLAENGEMin}{\theTopicTimeGESLAENGE}{Gestreckte Länge ZP}
+       \countermin{TopicTimeISOMETRIE}{\theTopicTimeISOMETRIEMin}{\theTopicTimeISOMETRIE}{Isometrische Darstellung ZP}
+       \countermin{TopicTimeWAERME}{\theTopicTimeWAERMEMin}{\theTopicTimeWAERME}{Wärmeübertragung ZP}\hline
        \textbf{ZP ET} &  & & \\ \hline\hline
-       \countertabline{TopicTimeETBASIS}{\theTopicTimeETBASISMin}{\theTopicTimeETBASIS}{Elektrotechnik Grundlagen ZP}
-       \countertabline{TopicTimeETSYMBOLE}{\theTopicTimeETSYMBOLEMin}{\theTopicTimeETSYMBOLE}{Elektrotechnik Symbole ZP}
-       \countertabline{TopicTimeETKOSTEN}{\theTopicTimeETKOSTENMin}{\theTopicTimeETKOSTEN}{Elektrotechnik Kosten ZP}
+       \countermin{TopicTimeETBASIS}{\theTopicTimeETBASISMin}{\theTopicTimeETBASIS}{Elektrotechnik Grundlagen ZP}
+       \countermin{TopicTimeETSYMBOLE}{\theTopicTimeETSYMBOLEMin}{\theTopicTimeETSYMBOLE}{Elektrotechnik Symbole ZP}
+       \countermin{TopicTimeETKOSTEN}{\theTopicTimeETKOSTENMin}{\theTopicTimeETKOSTEN}{Elektrotechnik Kosten ZP}
      \end{tabular}
    \renewcommand{\arraystretch}{1.0}
 

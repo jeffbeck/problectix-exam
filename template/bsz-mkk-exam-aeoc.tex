@@ -2,6 +2,7 @@
 
 \newcounter{ModeFinal}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BT counters
 % total time counters
 \newcounter{TimeTotal}
@@ -12,6 +13,9 @@
 
 \newcounter{TimeTotalKT}
 \newcounter{TimeTotalKTOK}% Minuten Kältetechnik
+
+\newcounter{TimeTotalKL}
+\newcounter{TimeTotalKLOK}% Minuten Kältetechnik
 
 \newcounter{TimeTotalPF}
 \newcounter{TimeTotalPFOK}% Minuten Pflichtaufgaben
@@ -28,25 +32,47 @@
 \newcounter{NumberTotalWA}
 \newcounter{NumberTotalWAOK}% Minuten Wahlaufgaben
 
+% count how often TopicTime<TOPIC> was updated
+\newcounter{NumberTopicsCounted}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TopicTimeCounter
 % TopicTimeTOPICNAME
+% HLOGP
+\newcounter{TopicTimeHLOGP}
+\newcounter{TopicTimeHLOGPMin}
 % HX
 \newcounter{TopicTimeHX}
 \newcounter{TopicTimeHXMin}
-% LOGPH
-\newcounter{TopicTimeLOGPH}
-\newcounter{TopicTimeLOGPHMin}
 % RI
 \newcounter{TopicTimeRI}
 \newcounter{TopicTimeRIMin}
-% MOP
-\newcounter{TopicTimeMOP}
-\newcounter{TopicTimeMOPMin}
 % KTFUNKTION
 \newcounter{TopicTimeKTFUNKTION}
 \newcounter{TopicTimeKTFUNKTIONMin}
-
+% WU
+\newcounter{TopicTimeWU}
+\newcounter{TopicTimeWUMin}
+% VERDICHTER
+\newcounter{TopicTimeVERDICHTER}
+\newcounter{TopicTimeVERDICHTERMin}
+% LUFT
+\newcounter{TopicTimeLUFT}
+\newcounter{TopicTimeLUFTMin}
+% MOP
+\newcounter{TopicTimeMOP}
+\newcounter{TopicTimeMOPMin}
+% COP
+\newcounter{TopicTimeCOP}
+\newcounter{TopicTimeCOPMin}
+% KUEHLTURM
+\newcounter{TopicTimeKUEHLTURM}
+\newcounter{TopicTimeKUEHLTURMMin}
+% ROHR
+\newcounter{TopicTimeROHR}
+\newcounter{TopicTimeROHRMin}
+% ET
 % SCHALTUNG
 \newcounter{TopicTimeSCHALTUNG}
 \newcounter{TopicTimeSCHALTUNGMin}
@@ -59,36 +85,19 @@
 % DREHSTROM
 \newcounter{TopicTimeDREHSTROM}
 \newcounter{TopicTimeDREHSTROMMin}
-% STROMSCHUTZ
-\newcounter{TopicTimeSTROMSCHUTZ}
-\newcounter{TopicTimeSTROMSCHUTZMin}
-% WU
-\newcounter{TopicTimeWU}
-\newcounter{TopicTimeWUMin}
-% VERDICHTER
-\newcounter{TopicTimeVERDICHTER}
-\newcounter{TopicTimeVERDICHTERMin}
-% FEUCHTELUFT
-\newcounter{TopicTimeFEUCHTELUFT}
-\newcounter{TopicTimeFEUCHTELUFTMin}
-% COP
-\newcounter{TopicTimeCOP}
-\newcounter{TopicTimeCOPMin}
-% KUEHLTURM
-\newcounter{TopicTimeKUEHLTURM}
-\newcounter{TopicTimeKUEHLTURMMin}
-% ROHRLEITUNG
-\newcounter{TopicTimeROHRLEITUNG}
-\newcounter{TopicTimeROHRLEITUNGMin}
+% ETSCHUTZ
+\newcounter{TopicTimeETSCHUTZ}
+\newcounter{TopicTimeETSCHUTZMin}
+% ZP
 % KREISLAUF
 \newcounter{TopicTimeKREISLAUF}
 \newcounter{TopicTimeKREISLAUFMin}
-% DRUCKSCHALTER
-\newcounter{TopicTimeDRUCKSCHALTER}
-\newcounter{TopicTimeDRUCKSCHALTERMin}
-% REFRIGERANT
-\newcounter{TopicTimeREFRIGERANT}
-\newcounter{TopicTimeREFRIGERANTMin}
+% PRESSOSTAT
+\newcounter{TopicTimePRESSOSTAT}
+\newcounter{TopicTimePRESSOSTATMin}
+% REFRIG
+\newcounter{TopicTimeREFRIG}
+\newcounter{TopicTimeREFRIGMin}
 % GESLAENGE
 \newcounter{TopicTimeGESLAENGE}
 \newcounter{TopicTimeGESLAENGEMin}
@@ -121,41 +130,42 @@
 % counters
 \setcounter{TimeTotalOK}{130}% incl. aller Wahlaufgaben
 \setcounter{TimeTotalETOK}{0}
-\setcounter{TimeTotalKTOK}{130}
+\setcounter{TimeTotalKTOK}{100}
+\setcounter{TimeTotalKLOK}{0}
 \setcounter{TimeTotalWAOK}{30}
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
 \setcounter{TimeWAErrorOK}{0}
 % TopicTime counters
 % KT
+\setcounter{TopicTimeHLOGPMin}{20}
 \setcounter{TopicTimeHXMin}{20}
-\setcounter{TopicTimeLOGPHMin}{20}
 \setcounter{TopicTimeRIMin}{20}
-\setcounter{TopicTimeMOPMin}{20}
 \setcounter{TopicTimeKTFUNKTIONMin}{20}
 \setcounter{TopicTimeWUMin}{20}
 \setcounter{TopicTimeVERDICHTERMin}{20}
-\setcounter{TopicTimeFEUCHTELUFTMin}{20}
-\setcounter{TopicTimeCOPMin}{20}
-\setcounter{TopicTimeKUEHLTURMMin}{20}
-\setcounter{TopicTimeROHRLEITUNGMin}{20}
+\setcounter{TopicTimeLUFTMin}{20}
+\setcounter{TopicTimeMOPMin}{0}
+\setcounter{TopicTimeCOPMin}{0}
+\setcounter{TopicTimeKUEHLTURMMin}{0}
+\setcounter{TopicTimeROHRMin}{0}
 % ET
 \setcounter{TopicTimeSCHALTUNGMin}{20}
 \setcounter{TopicTimeSCHALTPLANMin}{20}
 \setcounter{TopicTimeMOTORMin}{20}
 \setcounter{TopicTimeDREHSTROMMin}{20}
-\setcounter{TopicTimeSTROMSCHUTZMin}{20}
+\setcounter{TopicTimeETSCHUTZMin}{20}
 % ZP KT
-\setcounter{TopicTimeKREISLAUFMin}{20}
-\setcounter{TopicTimeDRUCKSCHALTERMin}{20}
-\setcounter{TopicTimeREFRIGERANTMin}{20}
-\setcounter{TopicTimeGESLAENGEMin}{20}
-\setcounter{TopicTimeISOMETRIEMin}{20}
-\setcounter{TopicTimeWAERMEMin}{20}
+\setcounter{TopicTimeKREISLAUFMin}{0}
+\setcounter{TopicTimePRESSOSTATMin}{0}
+\setcounter{TopicTimeREFRIGMin}{0}
+\setcounter{TopicTimeGESLAENGEMin}{0}
+\setcounter{TopicTimeISOMETRIEMin}{0}
+\setcounter{TopicTimeWAERMEMin}{0}
 % ZP ET
-\setcounter{TopicTimeETBASISMin}{20}
-\setcounter{TopicTimeETSYMBOLEMin}{20}
-\setcounter{TopicTimeETKOSTENMin}{20}
+\setcounter{TopicTimeETBASISMin}{0}
+\setcounter{TopicTimeETSYMBOLEMin}{0}
+\setcounter{TopicTimeETKOSTENMin}{0}
 }
 
 
@@ -166,47 +176,48 @@
 % counters
 \setcounter{TimeTotalOK}{130}
 \setcounter{TimeTotalETOK}{60}
-\setcounter{TimeTotalKTOK}{40}
+\setcounter{TimeTotalKTOK}{0}
+\setcounter{TimeTotalKLOK}{40}
 \setcounter{TimeTotalWAOK}{30}
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
 \setcounter{TimeWAErrorOK}{0}
 % TopicTime counters
 % KT
+\setcounter{TopicTimeHLOGPMin}{20}
 \setcounter{TopicTimeHXMin}{20}
-\setcounter{TopicTimeLOGPHMin}{20}
 \setcounter{TopicTimeRIMin}{20}
-\setcounter{TopicTimeMOPMin}{20}
 \setcounter{TopicTimeKTFUNKTIONMin}{20}
 \setcounter{TopicTimeWUMin}{20}
 \setcounter{TopicTimeVERDICHTERMin}{20}
-\setcounter{TopicTimeFEUCHTELUFTMin}{20}
-\setcounter{TopicTimeCOPMin}{20}
-\setcounter{TopicTimeKUEHLTURMMin}{20}
-\setcounter{TopicTimeROHRLEITUNGMin}{20}
+\setcounter{TopicTimeLUFTMin}{20}
+\setcounter{TopicTimeMOPMin}{0}
+\setcounter{TopicTimeCOPMin}{0}
+\setcounter{TopicTimeKUEHLTURMMin}{0}
+\setcounter{TopicTimeROHRMin}{0}
 % ET
 \setcounter{TopicTimeSCHALTUNGMin}{20}
 \setcounter{TopicTimeSCHALTPLANMin}{20}
 \setcounter{TopicTimeMOTORMin}{20}
 \setcounter{TopicTimeDREHSTROMMin}{20}
-\setcounter{TopicTimeSTROMSCHUTZMin}{20}
+\setcounter{TopicTimeETSCHUTZMin}{20}
 % ZP KT
-\setcounter{TopicTimeKREISLAUFMin}{20}
-\setcounter{TopicTimeDRUCKSCHALTERMin}{20}
-\setcounter{TopicTimeREFRIGERANTMin}{20}
-\setcounter{TopicTimeGESLAENGEMin}{20}
-\setcounter{TopicTimeISOMETRIEMin}{20}
-\setcounter{TopicTimeWAERMEMin}{20}
+\setcounter{TopicTimeKREISLAUFMin}{0}
+\setcounter{TopicTimePRESSOSTATMin}{0}
+\setcounter{TopicTimeREFRIGMin}{0}
+\setcounter{TopicTimeGESLAENGEMin}{0}
+\setcounter{TopicTimeISOMETRIEMin}{0}
+\setcounter{TopicTimeWAERMEMin}{0}
 % ZP ET
-\setcounter{TopicTimeETBASISMin}{20}
-\setcounter{TopicTimeETSYMBOLEMin}{20}
-\setcounter{TopicTimeETKOSTENMin}{20}
+\setcounter{TopicTimeETBASISMin}{0}
+\setcounter{TopicTimeETSYMBOLEMin}{0}
+\setcounter{TopicTimeETKOSTENMin}{0}
 }
 
 
 
 
-
+% \examinfo
 % zusatzbefehl in aufgabenumgebung
 \newcounter{ExamInfo}
 \setcounter{ExamInfo}{0}
@@ -214,18 +225,63 @@
 % step a counter to check if this command is issued in every aufgabe
 \stepcounter{ExamInfo}
 % step other counters 
-%    time counter in min
+% time counter in min
 \addtocounter{TimeTotal}{#1}
-% KT or ET
+% KT/KL/ET
 \ifthenelse{\equal{#2}{KT}}{\addtocounter{TimeTotalKT}{#1}}{} 
+\ifthenelse{\equal{#2}{KL}}{\addtocounter{TimeTotalKL}{#1}}{} 
 \ifthenelse{\equal{#2}{ET}}{\addtocounter{TimeTotalET}{#1}}{} 
-%    WA or PF
+%
+% WA/PF
 \ifthenelse{\equal{#3}{WA}}{\addtocounter{TimeTotalWA}{#1}}{} 
+\ifthenelse{\equal{#3}{PF}}{\addtocounter{TimeTotalPF}{#1}}{} 
 % Minuten Wahlaufgaben OK 
 \ifthenelse{\equal{#3}{WA}}{%
     \ifthenelse{\value{TimeWAOK}=#1}{}{\stepcounter{TimeWAError}}
 }{} 
-\ifthenelse{\equal{#3}{PF}}{\addtocounter{TimeTotalPF}{#1}}{} 
-%    TopicTime counter
-\ifthenelse{\equal{#4}{HX}}{\stepcounter{TopicTimeHX}}{} 
+% Anzahl Wahlaufgaben OK 
+\ifthenelse{\equal{#3}{WA}}{\stepcounter{NumberTotalWA}}{}
+%
+% TopicTime counter
+\ifthenelse{\equal{#4}{HLOGP}}{\addtocounter{TopicTimeHLOGP}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{HX}}{\addtocounter{TopicTimeHX}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{RI}}{\addtocounter{TopicTimeRI}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{KTFUNKTION}}{\addtocounter{TopicTimeKTFUNKTION}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{WU}}{\addtocounter{TopicTimeWU}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{VERDICHTER}}{\addtocounter{TopicTimeVERDICHTER}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{LUFT}}{\addtocounter{TopicTimeLUFT}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{MOP}}{\addtocounter{TopicTimeMOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{COP}}{\addtocounter{TopicTimeCOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{KUEHLTURM}}{\addtocounter{TopicTimeKUEHLTURM}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ROHR}}{\addtocounter{TopicTimeROHR}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{SCHALTUNG}}{\addtocounter{TopicTimeSCHALTUNG}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{SCHALTPLAN}}{\addtocounter{TopicTimeSCHALTPLAN}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{MOTOR}}{\addtocounter{TopicTimeMOTOR}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{DREHSTROM}}{\addtocounter{TopicTimeDREHSTROM}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETSCHUTZ}}{\addtocounter{TopicTimeETSCHUTZ}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{KREISLAUF}}{\addtocounter{TopicTimeKREISLAUF}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{PRESSOSTAT}}{\addtocounter{TopicTimePRESSOSTAT}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{REFRIG}}{\addtocounter{TopicTimeREFRIG}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{GESLAENGE}}{\addtocounter{TopicTimeGESLAENGE}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ISOMETRIE}}{\addtocounter{TopicTimeISOMETRIE}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{WAERME}}{\addtocounter{TopicTimeWAERME}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETBASIS}}{\addtocounter{TopicTimeETBASIS}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETSYMBOLE}}{\addtocounter{TopicTimeETSYMBOLE}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETKOSTEN}}{\addtocounter{TopicTimeETKOSTEN}{#1}\stepcounter{NumberTopicsCounted}}{} 
 }
+
+
+% \begin{examaufgabe}
+% \end{examaufgabe}
+\newenvironment{examaufgabe}[6][]{%% Begin \begin
+\examinfo{#3}{#4}{#5}{#6}
+\ifthenelse{\value{ModeFinal}=1}%
+  {\begin{aufgabe}[#1]{#2 \hfill (#3 Minuten)}}%
+  {\begin{aufgabe}[#1]{#2 \hfill \textcolor{gruen}{#3 Minuten #4 #5 #6}}}%
+
+--- 1: #1 --- 2: #2 --- 3: #3 --- 4: #4 --- 5: #5 --- 6: #6 ---
+
+}%
+{%
+\end{aufgabe}%
+}%
