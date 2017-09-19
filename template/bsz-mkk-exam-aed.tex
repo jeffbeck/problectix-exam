@@ -13,13 +13,13 @@
 
 % printout in draft mode
 \ifthenelse{\value{ModeFinal}=1}{}{% doing nothing on final
-%\newpage
+\newpage
 
 \textbf{Resulting counters for }\ExamWhich:
 
 \bigskip
 
-   \renewcommand{\arraystretch}{1.25}
+   \renewcommand{\arraystretch}{1.2}
      \begin{tabular}{|l|r|r|l|} \hline
        Beschreibung (Zeit in Minuten) & Sollwert & Istwert & Zähler-Name\\ \hline\hline
        \countertabline{TimeTotal}{\theTimeTotalOK}{\theTimeTotal}{Gesamtzeit \ExamWhich}
@@ -39,11 +39,38 @@
 
 \bigskip
 
-   \renewcommand{\arraystretch}{1.25}
+   \renewcommand{\arraystretch}{1.2}
      \begin{tabular}{|l|r|r|l|} \hline
        Beschreibung & MinMinutes & Istwert & Zähler-Name\\ \hline\hline
-       \countertabline{TopicTimeHX}{\theTopicTimeHXMin}{\theTopicTimeHX}{Aufgaben hx-Diagramm}
-
+       \textbf{BT1/BT2 KT} &  & & \\ \hline\hline
+       \countertabline{TopicTimeHX}{\theTopicTimeHXMin}{\theTopicTimeHX}{\hxdia}
+       \countertabline{TopicTimeLOGPH}{\theTopicTimeLOGPHMin}{\theTopicTimeLOGPH}{\hlogpdia}
+       \countertabline{TopicTimeRI}{\theTopicTimeRIMin}{\theTopicTimeRI}{RI-Fließbild}
+       \countertabline{TopicTimeMOP}{\theTopicTimeMOPMin}{\theTopicTimeMOP}{MOP}
+       \countertabline{TopicTimeKTFUNKTION}{\theTopicTimeKTFUNKTIONMin}{\theTopicTimeKTFUNKTION}{Funktionsanalyse Kältetechnik}
+       \countertabline{TopicTimeWU}{\theTopicTimeWUMin}{\theTopicTimeWU}{Wärmeübertrager}
+       \countertabline{TopicTimeVERDICHTER}{\theTopicTimeVERDICHTERMin}{\theTopicTimeVERDICHTER}{Verdichter}
+       \countertabline{TopicTimeFEUCHTELUFT}{\theTopicTimeFEUCHTELUFTMin}{\theTopicTimeFEUCHTELUFT}{Feuchte Luft}
+       \countertabline{TopicTimeCOP}{\theTopicTimeCOPMin}{\theTopicTimeCOP}{COP-Wert}
+       \countertabline{TopicTimeKUEHLTURM}{\theTopicTimeKUEHLTURMMin}{\theTopicTimeKUEHLTURM}{Kühlturm}
+       \countertabline{TopicTimeROHRLEITUNG}{\theTopicTimeROHRLEITUNGMin}{\theTopicTimeROHRLEITUNG}{Rohrleitungen}\hline
+       \textbf{BT1/BT2 KT} &  & & \\ \hline\hline
+       \countertabline{TopicTimeSCHALTUNG}{\theTopicTimeSCHALTUNGMin}{\theTopicTimeSCHALTUNG}{Schaltungsanalyse ET}
+       \countertabline{TopicTimeSCHALTPLAN}{\theTopicTimeSCHALTPLANMin}{\theTopicTimeSCHALTPLAN}{Schaltplan ET}
+       \countertabline{TopicTimeMOTOR}{\theTopicTimeMOTORMin}{\theTopicTimeMOTOR}{Elektromotor ET}
+       \countertabline{TopicTimeDREHSTROM}{\theTopicTimeDREHSTROMMin}{\theTopicTimeDREHSTROM}{Drehstrom ET}
+       \countertabline{TopicTimeSTROMSCHUTZ}{\theTopicTimeSTROMSCHUTZMin}{\theTopicTimeSTROMSCHUTZ}{Schutz vor elektr. Strom ET}\hline
+       \textbf{ZP KT} &  & & \\ \hline\hline
+       \countertabline{TopicTimeKREISLAUF}{\theTopicTimeKREISLAUFMin}{\theTopicTimeKREISLAUF}{Kältekreislauf ZP}
+       \countertabline{TopicTimeDRUCKSCHALTER}{\theTopicTimeDRUCKSCHALTERMin}{\theTopicTimeDRUCKSCHALTER}{Druckschalter ZP}
+       \countertabline{TopicTimeREFRIGERANT}{\theTopicTimeREFRIGERANTMin}{\theTopicTimeREFRIGERANT}{Kältemittel ZP}
+       \countertabline{TopicTimeGESLAENGE}{\theTopicTimeGESLAENGEMin}{\theTopicTimeGESLAENGE}{Gestreckte Länge ZP}
+       \countertabline{TopicTimeISOMETRIE}{\theTopicTimeISOMETRIEMin}{\theTopicTimeISOMETRIE}{Isometrische Darstellung ZP}
+       \countertabline{TopicTimeWAERME}{\theTopicTimeWAERMEMin}{\theTopicTimeWAERME}{Wärmeübertragung ZP}\hline
+       \textbf{ZP ET} &  & & \\ \hline\hline
+       \countertabline{TopicTimeETBASIS}{\theTopicTimeETBASISMin}{\theTopicTimeETBASIS}{Elektrotechnik Grundlagen ZP}
+       \countertabline{TopicTimeETSYMBOLE}{\theTopicTimeETSYMBOLEMin}{\theTopicTimeETSYMBOLE}{Elektrotechnik Symbole ZP}
+       \countertabline{TopicTimeETKOSTEN}{\theTopicTimeETKOSTENMin}{\theTopicTimeETKOSTEN}{Elektrotechnik Kosten ZP}
      \end{tabular}
    \renewcommand{\arraystretch}{1.0}
 
