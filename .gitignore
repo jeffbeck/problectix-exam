@@ -1,4 +1,4 @@
 *.dvi
 *.log
 *.aux
-
+*.toc
