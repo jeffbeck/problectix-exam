@@ -1,5 +1,17 @@
 \renewcommand{\mytemplate}{bsz-mkk-exam}
+\renewcommand*\contentsname{Aufgabenverzeichnis}
 
+% remember the categorie of the problem before
+% KT: 1
+% KL: 2
+% ET: 3
+\newcounter{LatestCategory}
+% remember WA/PF
+% PF: 1
+% WA: 2
+\newcounter{LatestMust}
+
+% counter Wahlaufgaben
 \newcounter{ModeFinal}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,7 +42,8 @@
 
 % other counters
 \newcounter{NumberTotalWA}
-\newcounter{NumberTotalWAOK}% Minuten Wahlaufgaben
+\newcounter{NumberTotalWAOK}% Anzahl Wahlaufgaben
+\newcounter{NumberTotalWASelect}% Anzahl zu wählender Wahlaufgaben
 
 % count how often TopicTime<TOPIC> was updated
 \newcounter{NumberTopicsCounted}
@@ -135,6 +148,7 @@
 \setcounter{TimeTotalWAOK}{30}
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
+\setcounter{NumberTotalWASelect}{2}
 \setcounter{TimeWAErrorOK}{0}
 % TopicTime counters
 % KT
@@ -181,6 +195,7 @@
 \setcounter{TimeTotalWAOK}{30}
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
+\setcounter{NumberTotalWASelect}{2}
 \setcounter{TimeWAErrorOK}{0}
 % TopicTime counters
 % KT
@@ -274,13 +289,44 @@
 % \begin{examaufgabe}
 % \end{examaufgabe}
 \newenvironment{examaufgabe}[6][]{%% Begin \begin
-\examinfo{#3}{#4}{#5}{#6}
+\examinfo{#3}{#4}{#5}{#6}%
+% tableofcontents-header if WA,PF is switched
+\ifthenelse{\equal{#5}{PF}}{%
+    \ifthenelse{\theLatestMust=1}%
+               {}%
+               {\pagebreak\section*{Pflichtaufgaben}\addtocontents{toc}{\textbf{Pflichtaufgaben}\par}}\setcounter{LatestMust}{1}%
+}{}%
+\ifthenelse{\equal{#5}{WA}}{%
+    \ifthenelse{\theLatestMust=2}%
+               {}%
+               {\pagebreak\section*{Wahlaufgaben (\theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben zu bearbeiten)}%
+                \addtocontents{toc}{\textbf{Wahlaufgaben} (\theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben zu bearbeiten)\par}}\setcounter{LatestMust}{2}%
+}{}%  
+% tableofcontents-header if KT,KL,ET is switched
+\ifthenelse{\equal{#4}{KT}}{%
+    \ifthenelse{\theLatestCategory=1}%
+               {}%
+               {\subsection*{Kältetechnik}\addtocontents{toc}{\hspace{5mm}\textbf{Kältetechnik}\par}}\setcounter{LatestCategory}{1}%
+}{}%  
+\ifthenelse{\equal{#4}{KL}}{%
+    \ifthenelse{\theLatestCategory=2}%
+               {}%
+               {\subsection*{Klimatechnik}\addtocontents{toc}{\hspace{5mm}\textbf{Klimatechnik}\par}}\setcounter{LatestCategory}{2}%
+}{}% 
+\ifthenelse{\equal{#4}{ET}}{%
+    \ifthenelse{\theLatestCategory=3}%
+               {}%
+               {\subsection*{Elektrotechnik}\addtocontents{toc}{\hspace{5mm}\textbf{Elektrotechnik}\par}}\setcounter{LatestCategory}{3}%
+}{}%  
+% tableofcontents of problem
+\addtocontents{toc}{\hspace{10mm}Aufgabe \theaufgabennummer: #2 (#3 min)\hfill\thepage\par}
+% call aufgabe environment
 \ifthenelse{\value{ModeFinal}=1}%
   {\begin{aufgabe}[#1]{#2 \hfill (#3 Minuten)}}%
   {\begin{aufgabe}[#1]{#2 \hfill \textcolor{gruen}{#3 Minuten #4 #5 #6}}}%
-
---- 1: #1 --- 2: #2 --- 3: #3 --- 4: #4 --- 5: #5 --- 6: #6 ---
-
+%
+%--- 1: #1 --- 2: #2 --- 3: #3 --- 4: #4 --- 5: #5 --- 6: #6 ---
+%
 }%
 {%
 \end{aufgabe}%
