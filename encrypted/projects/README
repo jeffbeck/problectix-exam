@@ -1,0 +1,12 @@
+The files (project,problem) are found ONLY if there are in a certain location.
+This avoids pairing a problem with the wrong project
+
+A problem file can be used only in ONE project 
+(The project with the name of the directory the problem is in)
+
+A) ONE subdirectory with the name <projectname>
+B) ONE project description file <projectname>/<projectname>.tex
+   loaded with \inputproject{<projectname>}
+C) Multiple Aufgaben files <projectname>/<your_name>.tex
+   loaded with \inputproblem{<your_name>}
+   (Aufgaben files are only found in the <projectname> subdirectory)

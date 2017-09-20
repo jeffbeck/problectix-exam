@@ -8,9 +8,26 @@ which:
 - OK: writes a new header with more Info (Time, ET/KT, Wahl/Pfichtaufgabe)
 - OK: show theme on draft mode
 - OK: add aufgaben to tableofcontents
-- CHECK: add \anhang to tableofcontents
+- add \anhang to tableofcontents
+TODO: multiple anhang needed
 
-multiple anhang
+Datenstruktur
+
+Encrypted dir:
+<encrypt>
+
+Project dir:
+<encrypt>/projects/<projectname>
+Project description (loaded with \inputproject{<projectname>})
+<encrypt>/projects/<projectname>/<projectname>.tex  
+
+Workspace dir:
+<encrypt>/workspace/<2017-Sommer-BT1.tex>
+
+archive Dir (must be moved there by hand)
+<encrypt>/archive/<2017-Sommer-BT1.pdf>
+
+
 
 Write testfile with counters:
 
