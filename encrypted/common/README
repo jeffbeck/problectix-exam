@@ -1,0 +1,3 @@
+Common Aufgaben können in jedem Projekt genutzt werde mit dem aufruf:
+
+\inputcommon{filebasename}
