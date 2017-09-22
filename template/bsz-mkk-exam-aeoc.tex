@@ -137,8 +137,12 @@
 \newcommand{\ExamWhich}{--- none ---}
 
 
-% Setze Zähler für BT1
+% BT1
 \newcommand{\BTone}[1]{
+\School{BSZ Leonberg}
+\Titelu{Berufstheorie \MakeUppercase{\romannumeral 1}}
+\Beruf{Mechatroniker/-in für Kältetechnik}
+%
 \ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{} 
 \renewcommand{\ExamWhich}{\textbf{BT\,1}}
 % counters
@@ -184,8 +188,12 @@
 }
 
 
-% Setze Zähler für BT2
+% BT2
 \newcommand{\BTtwo}[1]{
+\School{BSZ Leonberg}
+\Titelu{Berufstheorie \MakeUppercase{\romannumeral 2}}
+\Beruf{Mechatroniker/-in für Kältetechnik}
+%
 \ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{} 
 \renewcommand{\ExamWhich}{\textbf{BT\,2}}
 % counters
@@ -290,6 +298,18 @@
 
 
 
+% \Beruf
+\newcommand{\berufuse}[2][]{
+  \ifthenelse{\value{debuggen}=1}{%
+    \hspace{-1ex}\textcolor{red}{\texttt{\textbackslash Beruf\{\}\hspace{-1ex}}}%
+  }{\xspace}
+}
+\newcommand{\Beruf}[2][]{%
+  \ifthenelse{\value{debuggen}=1}{}{\renewcommand{\berufuse}[2][]{#2}}
+}
+
+
+
 % \inputproject
 \newcommand{\inputproject}[1]{
     \renewcommand{\projectname}{#1}
@@ -315,7 +335,7 @@
 
 % \projectsection
 \newcommand{\projectsection}[1]{
-\subsection*{#1}\addtocontents{toc}{\hspace{5mm}#1\hfill Seite \thepage\par}
+\subsection*{#1}\addtocontents{toc}{\hspace{5mm}#1\dotfill Seite \thepage\par}
 }
 
 
@@ -331,13 +351,13 @@
 \ifthenelse{\equal{#5}{PF}}{%
     \ifthenelse{\theLatestMust=1}%
                {}%
-               {\pagebreak\section*{Pflichtaufgaben}\addtocontents{toc}{\vspace{3mm}\textbf{Pflichtaufgaben}\par}}\setcounter{LatestMust}{1}%
+               {\pagebreak\section*{Teil 1: Projekt-Pflichtaufgaben (Alle Aufgaben sind zu lösen)}\addtocontents{toc}{\vspace{3mm}\textbf{Teil 1: Projekt-Pflichtaufgaben} (Alle Aufgaben sind zu lösen)\par}}\setcounter{LatestMust}{1}%
 }{}%
 \ifthenelse{\equal{#5}{WA}}{%
     \ifthenelse{\theLatestMust=2}%
                {}%
-               {\pagebreak\section*{Wahlaufgaben (\theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben zu bearbeiten)}%
-                \addtocontents{toc}{\vspace{3mm}\textbf{Wahlaufgaben} (\theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben zu bearbeiten)\par}}\setcounter{LatestMust}{2}%
+               {\pagebreak\section*{Teil 2: Wahlaufgaben (\theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)}%
+                \addtocontents{toc}{\vspace{3mm}\textbf{Teil 2: Wahlaufgaben} (\theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)\par}}\setcounter{LatestMust}{2}%
 }{}%  
 % tableofcontents-header if KT,KL,ET is switched
 \ifthenelse{\equal{#4}{KT}}{%
@@ -356,7 +376,7 @@
                {\subsection*{Elektrotechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Elektrotechnik}\par}}\setcounter{LatestCategory}{3}%
 }{}%  
 % tableofcontents of problem
-\addtocontents{toc}{\hspace{10mm}Aufgabe \theaufgabennummer: #2 (#3 min)\hfill Seite \thepage\par}
+\addtocontents{toc}{\hspace{10mm}Aufgabe \theaufgabennummer: #2 (#3 min)\dotfill Seite \thepage\par}
 % call aufgabe environment
 \ifthenelse{\value{ModeFinal}=1}%
   {\begin{aufgabe}[#1]{#2 \hfill (#3 Minuten)}}% final

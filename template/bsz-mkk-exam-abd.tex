@@ -4,10 +4,67 @@
 \setcounter{testredcounter_ok}{1}
 \aufgabenmarkesetzen%
 
+% ??????
+\setcounter{teilaufnummerierung}{1}
+\setcounter{aufgabennummerierung}{1}
+%\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0mm}%
+
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{\footnotesize\schooluse}
+%\cfoot{\titelouse} % Seite
+\rfoot{\footnotesize\berufuse}
+
+
+
+\addtocontents{toc}{Diese Seite (DIN\,A3-Umschlag)\dotfill Seite \thepage\par}
+
+Abschlussprüfung \titelouse{} \hfill Abschlussprüfung \titelouse{}
+
+der Berufsschulen (gewerbl. Bereich) \hfill der Handwerkskammern
+
+Ministerium für Kultus, Jugend und Sport \hfill (schriftlicher Teil)
+
+Baden-Württemberg \hfill Baden-Württemberg
+
+
+
+
+\vspace{1mm}
+
+\rule{\textwidth}{0.25mm}
+
+\begin{center}
+    \vspace{-2mm}
+    \huge \textbf{\berufuse}
+    \vspace{-2mm}
+\end{center}
+\rule{\textwidth}{0.25mm}
+
+BT1/2 120 min Bereich
+
+Hilfsmittel Bewertung zu beachten
+
 \begin{center}
 \begin{minipage}{120mm}
 \tableofcontents
 \end{minipage}
 \end{center}
 
+\begin{tabular*}{\textwidth}[t]{|p{\textwidth/5}|@{\extracolsep{\fill}} l|} \hline
+\textbf{\rule[-3mm]{0mm}{9mm}Name, Vorname:} &  \\ \hline
+\textbf{\rule[-3mm]{0mm}{9mm}Klasse:}        &  \\ \hline
+\end{tabular*}
+
 \newpage
+% Set Headers
+\lhead{\footnotesize\titeluuse{}, \titelouse{}}
+\chead{}
+\rhead{Name: \rule[-1.3mm]{50mm}{0.2mm}}
+\lfoot{\footnotesize\schooluse}
+%\cfoot{\titelouse} % Seite
+\rfoot{\footnotesize\berufuse}
+
+
