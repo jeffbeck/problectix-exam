@@ -20,6 +20,7 @@
 % total time counters
 \newcounter{TimeTotal}
 \newcounter{TimeTotalOK}% Minuten Gesamt
+\newcounter{TimeTotalOKdisplay}% Minuten Gesamt anzuzeigen
 
 \newcounter{TimeTotalET}
 \newcounter{TimeTotalETOK}% Minuten Elektrotechnik
@@ -28,7 +29,7 @@
 \newcounter{TimeTotalKTOK}% Minuten Kältetechnik
 
 \newcounter{TimeTotalKL}
-\newcounter{TimeTotalKLOK}% Minuten Kältetechnik
+\newcounter{TimeTotalKLOK}% Minuten Klimatechnik
 
 \newcounter{TimeTotalPF}
 \newcounter{TimeTotalPFOK}% Minuten Pflichtaufgaben
@@ -142,11 +143,13 @@
 \School{BSZ Leonberg}
 \Titelu{Berufstheorie \MakeUppercase{\romannumeral 1}}
 \Beruf{Mechatroniker/-in für Kältetechnik}
+\Bereich{Kältetechnik}
 %
 \ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{} 
 \renewcommand{\ExamWhich}{\textbf{BT\,1}}
 % counters
 \setcounter{TimeTotalOK}{130}% incl. aller Wahlaufgaben
+\setcounter{TimeTotalOKdisplay}{120}
 \setcounter{TimeTotalETOK}{0}
 \setcounter{TimeTotalKTOK}{100}
 \setcounter{TimeTotalKLOK}{0}
@@ -193,11 +196,13 @@
 \School{BSZ Leonberg}
 \Titelu{Berufstheorie \MakeUppercase{\romannumeral 2}}
 \Beruf{Mechatroniker/-in für Kältetechnik}
+\Bereich{Kälte- und Klimatechnik}
 %
 \ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{} 
 \renewcommand{\ExamWhich}{\textbf{BT\,2}}
 % counters
 \setcounter{TimeTotalOK}{130}
+\setcounter{TimeTotalOKdisplay}{120}
 \setcounter{TimeTotalETOK}{60}
 \setcounter{TimeTotalKTOK}{0}
 \setcounter{TimeTotalKLOK}{40}
@@ -308,6 +313,16 @@
   \ifthenelse{\value{debuggen}=1}{}{\renewcommand{\berufuse}[2][]{#2}}
 }
 
+% \Bereich
+\newcommand{\bereichuse}[2][]{
+  \ifthenelse{\value{debuggen}=1}{%
+    \hspace{-1ex}\textcolor{red}{\texttt{\textbackslash Bereich\{\}\hspace{-1ex}}}%
+  }{\xspace}
+}
+\newcommand{\Bereich}[2][]{%
+  \ifthenelse{\value{debuggen}=1}{}{\renewcommand{\bereichuse}[2][]{#2}}
+}
+
 
 
 % \inputproject
@@ -351,29 +366,29 @@
 \ifthenelse{\equal{#5}{PF}}{%
     \ifthenelse{\theLatestMust=1}%
                {}%
-               {\pagebreak\section*{Teil 1: Projekt-Pflichtaufgaben (Alle Aufgaben sind zu lösen)}\addtocontents{toc}{\vspace{3mm}\textbf{Teil 1: Projekt-Pflichtaufgaben} (Alle Aufgaben sind zu lösen)\par}}\setcounter{LatestMust}{1}%
+               {\pagebreak\section*{Teil 1: Projekt-Pflichtaufgaben (\theTimeTotalPFOK{} Minuten)}\addtocontents{toc}{\vspace{3mm}\textbf{Teil 1: Projekt-Pflichtaufgaben} (\theTimeTotalPFOK{} Minuten)\par}}\setcounter{LatestMust}{1}%
 }{}%
 \ifthenelse{\equal{#5}{WA}}{%
     \ifthenelse{\theLatestMust=2}%
                {}%
-               {\pagebreak\section*{Teil 2: Wahlaufgaben (\theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)}%
-                \addtocontents{toc}{\vspace{3mm}\textbf{Teil 2: Wahlaufgaben} (\theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)\par}}\setcounter{LatestMust}{2}%
+               {\pagebreak\section*{Teil 2: Wahlaufgaben (\theTimeTotalWAOK{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)}%
+                \addtocontents{toc}{\vspace{3mm}\textbf{Teil 2: Wahlaufgaben} (\theTimeTotalWAOK{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufg. bearbeiten)\par}}\setcounter{LatestMust}{2}%
 }{}%  
 % tableofcontents-header if KT,KL,ET is switched
 \ifthenelse{\equal{#4}{KT}}{%
     \ifthenelse{\theLatestCategory=1}%
                {}%
-               {\subsection*{Kältetechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Kältetechnik}\par}}\setcounter{LatestCategory}{1}%
+               {\subsection*{Kältetechnik (\theTimeTotalKTOK{} Minuten)}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Kältetechnik (\theTimeTotalKTOK{} Minuten)}\par}}\setcounter{LatestCategory}{1}%
 }{}%  
 \ifthenelse{\equal{#4}{KL}}{%
     \ifthenelse{\theLatestCategory=2}%
                {}%
-               {\subsection*{Klimatechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Klimatechnik}\par}}\setcounter{LatestCategory}{2}%
+               {\subsection*{Klimatechnik (\theTimeTotalKLOK{} Minuten)}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Klimatechnik (\theTimeTotalKLOK{} Minuten)}\par}}\setcounter{LatestCategory}{2}%
 }{}% 
 \ifthenelse{\equal{#4}{ET}}{%
     \ifthenelse{\theLatestCategory=3}%
                {}%
-               {\subsection*{Elektrotechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Elektrotechnik}\par}}\setcounter{LatestCategory}{3}%
+               {\subsection*{Elektrotechnik (\theTimeTotalETOK{} Minuten)}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Elektrotechnik (\theTimeTotalETOK{} Minuten)}\par}}\setcounter{LatestCategory}{3}%
 }{}%  
 % tableofcontents of problem
 \addtocontents{toc}{\hspace{10mm}Aufgabe \theaufgabennummer: #2 (#3 min)\dotfill Seite \thepage\par}
