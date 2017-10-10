@@ -78,6 +78,9 @@
 % MOP
 \newcounter{TopicTimeMOP}
 \newcounter{TopicTimeMOPMin}
+% ABTAUUNG
+\newcounter{TopicTimeABTAUUNG}
+\newcounter{TopicTimeABTAUUNGMin}
 % COP
 \newcounter{TopicTimeCOP}
 \newcounter{TopicTimeCOPMin}
@@ -151,7 +154,7 @@
 \setcounter{TimeTotalOK}{130}% incl. aller Wahlaufgaben
 \setcounter{TimeTotalOKdisplay}{120}
 \setcounter{TimeTotalETOK}{0}
-\setcounter{TimeTotalKTOK}{100}
+\setcounter{TimeTotalKTOK}{130}
 \setcounter{TimeTotalKLOK}{0}
 \setcounter{TimeTotalWAOK}{30}
 \setcounter{TimeTotalPFOK}{100}
@@ -161,22 +164,23 @@
 % TopicTime counters
 % KT
 \setcounter{TopicTimeHLOGPMin}{20}
-\setcounter{TopicTimeHXMin}{20}
+\setcounter{TopicTimeHXMin}{0}
 \setcounter{TopicTimeRIMin}{20}
-\setcounter{TopicTimeKTFUNKTIONMin}{20}
+\setcounter{TopicTimeKTFUNKTIONMin}{0}
 \setcounter{TopicTimeWUMin}{20}
 \setcounter{TopicTimeVERDICHTERMin}{20}
-\setcounter{TopicTimeLUFTMin}{20}
+\setcounter{TopicTimeLUFTMin}{0}
 \setcounter{TopicTimeMOPMin}{0}
+\setcounter{TopicTimeABTAUUNGMin}{0}
 \setcounter{TopicTimeCOPMin}{0}
 \setcounter{TopicTimeKUEHLTURMMin}{0}
 \setcounter{TopicTimeROHRMin}{0}
 % ET
-\setcounter{TopicTimeSCHALTUNGMin}{20}
-\setcounter{TopicTimeSCHALTPLANMin}{20}
-\setcounter{TopicTimeMOTORMin}{20}
-\setcounter{TopicTimeDREHSTROMMin}{20}
-\setcounter{TopicTimeETSCHUTZMin}{20}
+\setcounter{TopicTimeSCHALTUNGMin}{0}
+\setcounter{TopicTimeSCHALTPLANMin}{0}
+\setcounter{TopicTimeMOTORMin}{0}
+\setcounter{TopicTimeDREHSTROMMin}{0}
+\setcounter{TopicTimeETSCHUTZMin}{0}
 % ZP KT
 \setcounter{TopicTimeKREISLAUFMin}{0}
 \setcounter{TopicTimePRESSOSTATMin}{0}
@@ -213,14 +217,15 @@
 \setcounter{TimeWAErrorOK}{0}
 % TopicTime counters
 % KT
-\setcounter{TopicTimeHLOGPMin}{20}
+\setcounter{TopicTimeHLOGPMin}{0}
 \setcounter{TopicTimeHXMin}{20}
-\setcounter{TopicTimeRIMin}{20}
-\setcounter{TopicTimeKTFUNKTIONMin}{20}
-\setcounter{TopicTimeWUMin}{20}
-\setcounter{TopicTimeVERDICHTERMin}{20}
+\setcounter{TopicTimeRIMin}{0}
+\setcounter{TopicTimeKTFUNKTIONMin}{0}
+\setcounter{TopicTimeWUMin}{0}
+\setcounter{TopicTimeVERDICHTERMin}{0}
 \setcounter{TopicTimeLUFTMin}{20}
 \setcounter{TopicTimeMOPMin}{0}
+\setcounter{TopicTimeABTAUUNGMin}{0}
 \setcounter{TopicTimeCOPMin}{0}
 \setcounter{TopicTimeKUEHLTURMMin}{0}
 \setcounter{TopicTimeROHRMin}{0}
@@ -282,6 +287,7 @@
 \ifthenelse{\equal{#4}{VERDICHTER}}{\addtocounter{TopicTimeVERDICHTER}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{LUFT}}{\addtocounter{TopicTimeLUFT}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{MOP}}{\addtocounter{TopicTimeMOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ABTAUUNG}}{\addtocounter{TopicTimeABTAUUNG}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{COP}}{\addtocounter{TopicTimeCOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{KUEHLTURM}}{\addtocounter{TopicTimeKUEHLTURM}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{ROHR}}{\addtocounter{TopicTimeROHR}{#1}\stepcounter{NumberTopicsCounted}}{} 
@@ -348,7 +354,12 @@
 
 % \projectincludegraphics
 \newcommand{\projectincludegraphics}[2][]{
-    \includegraphics[#1]{../projects/\projectname/#2}
+    \includegraphics[#1]{../projects/\projectname/#2}\label{#2}
+}
+
+% \commonincludegraphics
+\newcommand{\commonincludegraphics}[2][]{
+    \includegraphics[#1]{../common/#2}\label{#2}
 }
 
 
