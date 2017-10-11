@@ -36,6 +36,7 @@
 
 \newcounter{TimeTotalWA}
 \newcounter{TimeTotalWAOK}% Minuten Wahlaufgaben
+\newcounter{TimeTotalWAOKdisplay}% Minuten Wahlaufgaben anzuzeigen
 
 \newcounter{TimeWAError}
 \newcounter{TimeWAErrorOK}
@@ -157,6 +158,7 @@
 \setcounter{TimeTotalKTOK}{130}
 \setcounter{TimeTotalKLOK}{0}
 \setcounter{TimeTotalWAOK}{30}
+\setcounter{TimeTotalWAOKdisplay}{20}
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
 \setcounter{NumberTotalWASelect}{2}
@@ -211,6 +213,7 @@
 \setcounter{TimeTotalKTOK}{0}
 \setcounter{TimeTotalKLOK}{40}
 \setcounter{TimeTotalWAOK}{30}
+\setcounter{TimeTotalWAOKdisplay}{20}
 \setcounter{TimeTotalPFOK}{100}
 \setcounter{NumberTotalWAOK}{3}
 \setcounter{NumberTotalWASelect}{2}
@@ -369,6 +372,50 @@
 \subsection*{#1}\addtocontents{toc}{\hspace{5mm}#1\dotfill Seite \thepage\par}
 }
 
+% \projectanhang
+\newcommand{\projectanhang}[3][]{%
+   %% counting the references in the main material
+   \stepcounter{mainpage}%
+   (siehe Anhang \Alph{mainpage})%
+   \AtEndDocument{%
+      \stepcounter{apppage}
+      \addtocontents{toc}{Anhang \Alph{apppage}: \, #2 \dotfill Seite \thepage \par}
+      \ifthenelse{\value{xlsg}=1}{% green
+          \chead{\textcolor{xlsgcolor}{\textbf{Anhang \Alph{apppage}: #2}}\hspace{20mm}}
+      }{% black
+          \chead{\textbf{Anhang \Alph{apppage}: #2}\hspace{20mm}}
+      }
+      \vspace*{\fill}
+      %% dirty hack to keep the graphic on one page, when textheight 
+      \enlargethispage{4mm}
+      \vspace{-12mm}
+      %% dirty hack end
+      \begin{center}
+      \ifthenelse{\equal{#1}{}}{
+          \includepsfraggraphics
+            [width=\textwidth,height=\textheight,keepaspectratio]{../projects/\projectname/#3}
+      }{\includepsfraggraphics[#1]{../projects/\projectname/#3}}
+      \end{center}
+      \vspace*{\fill}
+      \clearpage
+      \AtEndDocument{% von lastpage.sty angepasst an verylastpage
+      \message{AED: command anhang is setting a label for verylastpage}%
+      \clearpage\verylastpage@putlabel}%
+   }%
+}
+
+
+\newcommand{\xprojectanhang}[4][]{%
+   \ifthenelse{\value{xlsg}=1}{%
+      \projectanhang[#1]{#2}{#4}%
+   }{%
+      \projectanhang[#1]{#2}{#3}%
+   }
+}
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -387,24 +434,24 @@
 \ifthenelse{\equal{#5}{WA}}{%
     \ifthenelse{\theLatestMust=2}%
                {}%
-               {\pagebreak\section*{Teil 2: Wahlaufgaben (\theTimeTotalWAOK{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)}%
-                \addtocontents{toc}{\vspace{3mm}\textbf{Teil 2: Wahlaufgaben} (\theTimeTotalWAOK{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufg. bearbeiten)\par}}\setcounter{LatestMust}{2}%
+               {\pagebreak\section*{Teil 2: Wahlaufgaben (\theTimeTotalWAOKdisplay{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)}%
+                \addtocontents{toc}{\vspace{3mm}\textbf{Teil 2: Wahlaufgaben} (\theTimeTotalWAOKdisplay{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufg. bearbeiten)\par}}\setcounter{LatestMust}{2}%
 }{}%  
 % tableofcontents-header if KT,KL,ET is switched
 \ifthenelse{\equal{#4}{KT}}{%
     \ifthenelse{\theLatestCategory=1}%
                {}%
-               {\subsection*{Kältetechnik (\theTimeTotalKTOK{} Minuten)}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Kältetechnik (\theTimeTotalKTOK{} Minuten)}\par}}\setcounter{LatestCategory}{1}%
+               {\subsection*{Kältetechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Kältetechnik}\par}}\setcounter{LatestCategory}{1}%
 }{}%  
 \ifthenelse{\equal{#4}{KL}}{%
     \ifthenelse{\theLatestCategory=2}%
                {}%
-               {\subsection*{Klimatechnik (\theTimeTotalKLOK{} Minuten)}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Klimatechnik (\theTimeTotalKLOK{} Minuten)}\par}}\setcounter{LatestCategory}{2}%
+               {\subsection*{Klimatechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Klimatechnik}\par}}\setcounter{LatestCategory}{2}%
 }{}% 
 \ifthenelse{\equal{#4}{ET}}{%
     \ifthenelse{\theLatestCategory=3}%
                {}%
-               {\subsection*{Elektrotechnik (\theTimeTotalETOK{} Minuten)}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Elektrotechnik (\theTimeTotalETOK{} Minuten)}\par}}\setcounter{LatestCategory}{3}%
+               {\subsection*{Elektrotechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Elektrotechnik}\par}}\setcounter{LatestCategory}{3}%
 }{}%  
 % tableofcontents of problem
 \addtocontents{toc}{\hspace{10mm}Aufgabe \theaufgabennummer: #2 (#3 min)\dotfill Seite \thepage\par}
