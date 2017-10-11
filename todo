@@ -1,5 +1,15 @@
 
-make jefflatex recognise 
+make jefflatex recognise examaufgabe
+
+examaufgabe: cp stuff from \newcommand{aufgabe} to examaufgabe
+--> Aufgabe 1 --> BT1-1, ....
+--> REASON: Header is a Double line with option examlsg
+---> create oneliner
+ --> examlsg:   one liner: Aufgabe Nr: Titel ... xx Min|kt PF HLOGP
+ --> exam:      one liner: Aufgabe Nr: Titel ... xx Minuten
+--> do not display path, display filename only
+
+
 
 OK: --> \begin{examaufgabe}{Titel}{12}{ET}{WA}{HX}
 OK:    --> Aufgabenummer anpassen
