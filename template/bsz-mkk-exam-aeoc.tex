@@ -376,7 +376,7 @@
 \newcommand{\projectanhang}[3][]{%
    %% counting the references in the main material
    \stepcounter{mainpage}%
-   (siehe Anhang \Alph{mainpage})%
+   \Alph{mainpage}% this is printed
    \AtEndDocument{%
       \stepcounter{apppage}
       \addtocontents{toc}{Anhang \Alph{apppage}: \, #2 \dotfill Seite \thepage \par}
@@ -390,7 +390,7 @@
       \enlargethispage{4mm}
       \vspace{-12mm}
       %% dirty hack end
-      \begin{center}
+      \begin{center}\label{#3}\label{\Alph{apppage}}
       \ifthenelse{\equal{#1}{}}{
           \includepsfraggraphics
             [width=\textwidth,height=\textheight,keepaspectratio]{../projects/\projectname/#3}
