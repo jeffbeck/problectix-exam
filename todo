@@ -53,4 +53,23 @@ Result should be always 42 or 420 or 4200, alles grün
 \BTwo
 
 \ZPTone
--> 
+->
+
+
+
+
+Elektro-Schaltplan
+QElektroTech nicht in ubuntu, opensource,
+mit Quellenhinzunahme *.qet-Dateien
+Eigene Symbole wurden erstellt (Paket?)
+Im Unterricht nutzen?
+
+Export: png -> eps (Pixel: lange Seite 3000x (2065-automatisch))
+
+- Dort wo gestrichelter Kreis/oval ist, müssen die Schüler was ergänzen
+- Ergänzt wir NUR, was auch im korrekten Schaltplan enthalten ist
+- andere Fragen werden bei den Fragen ergänzt (auf Lösungslinien)
+
+
+Evtl. BT2: Schaltplan UND RI-Fließbild mit QElektroTech
+
