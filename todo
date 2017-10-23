@@ -1,13 +1,13 @@
 
 make jefflatex recognise examaufgabe
 
-examaufgabe: cp stuff from \newcommand{aufgabe} to examaufgabe
+examaufgabe: cp stuff from teacher to problectix-exam -> \renewcommand{aufgabe}
 --> Aufgabe 1 --> BT1-1, ....
 --> REASON: Header is a Double line with option examlsg
 ---> create oneliner
  --> examlsg:   one liner: Aufgabe Nr: Titel ... xx Min|kt PF HLOGP
  --> exam:      one liner: Aufgabe Nr: Titel ... xx Minuten
---> do not display path, display filename only
+--> OK: do not display path, display filename only
 
 
 

@@ -421,6 +421,264 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewenvironment{aufgabe}[2][]{%% Begin \begin
+\setcounter{loesungslinienanzahl}{0}%
+\setcounter{punktebefehle}{0}%
+\setcounter{nothing}{1}%
+%^^A Noch keinen Loesungsbefehl innerhalb von Aufgabe ausgefuehrt:
+\setcounter{ersteloesunginaufgabe}{0}%
+\setcounter{teilaufgabenloesung}{1}%^^A Verhindert, dass in der ersten
+%^^A teilaufgabe fehlende Loesung vermutet wird
+%^^A Nummerierung der Textbloecke auf 0 stellen
+\setcounter{textblocknummerreal}{0}
+\setcounter{teilaufgabennummer}{0}%^^A Zaehlererhoehung in teilaufgabe-Umgebung
+\setcounter{teilaufgabennummerreal}{0}%^^A
+%^^A Zaehler die Anzeigen, ob Befehle a, b, ab, abc, projekt benutzt wurden > 
+\setcounter{a}{0}\setcounter{b}{0}\setcounter{c}{0}\setcounter{projekt}{0}%
+%^^A Kopfzeilen:
+%^^A Kopfzeile Loesung, BEGINN
+\ifthenelse{\value{loesungen}=1 \and%
+   \value{aufgabenstellung}=0% 
+   }%
+   {\vspace{3.5mm}
+    \begin{minipage}[t]{\aufgabentitelbreite}
+    \begin{picture}(0,0)% unbemerkbares Bild mit Abgrenzungslinie zur Voraufgabe
+       \thicklines                 %% Breie Linien
+       \put(0,5){\line(1,0){175}}  %% Linie Zeichnen
+    \end{picture}%
+    \textbf{\aufgabenmarkeuse{} \arabic{aufgabennummer}\,: #2}      
+    \ifthenelse{\value{aufgabentitel}=0}{}{\textbf{#2}}\hfill%
+    %\ifthenelse{\value{dateinamen}=0}{}{\usebox{\dateiname}\,:\,\theorder\,:\,\RCSRevision \hfill}%
+    \ifthenelse{\value{fachangabe}=0}{}{#1\hfill}%
+    \ifthenelse{\value{gruppeninfohead}=0}{}%
+   {%
+    %% Gruppeninfo angeben
+%    \ifthenelse{\value{projektbezug}=0}{\keinprojekt}{}%
+%    \ifthenelse{\value{projektbezug}=1}{Pro}{}%
+%    \ifthenelse{\value{gruppeglobal}=1}{\,:\,A}{}%
+%    \ifthenelse{\value{gruppeglobal}=2}{\,:\,B}{}%
+%    \ifthenelse{\value{gruppeglobal}=3}{\,:\,C}{}%
+    \ifthenelse{\value{gruppeglobal}=1}{A}{}%
+    \ifthenelse{\value{gruppeglobal}=2}{B}{}%
+    \ifthenelse{\value{gruppeglobal}=3}{C}{}%
+   }%
+    \end{minipage}
+    \par
+    \vspace{1.5mm}
+   } 
+   {}%
+%^^A Kopfzeile Loesung, ENDE
+%^^A Kopfzeile Aufgabe, BEGINN
+\ifthenelse{\value{aufgabenkopfzeile}=1}%
+ {%^^A  Aufgabenkopfzeile zeigen Beginn
+   \par
+   %^^A Abstand Voriges Aufgabenende - Aufgabentitelbalken >
+   \ifthenelse{\value{dehnen}=0}{\vspace{0mm}}{\vspace{0mm} \bigskip}%   
+   %^^A Aufgabentitelbalken erzeugen: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+   \begin{minipage}[t]{\aufgabentitelbreite}  %^^A Beginn Aufgabentitelbalken
+     \textbf{\aufgabenmarkeuse{} \arabic{aufgabennummer}\,: }%
+     %^^A Aufgabentitel schreiben >
+     \ifthenelse{\value{aufgabentitel}=0}{}{\textbf{#2}}\hfill%
+     %^^A Dateinamen schreiben >
+%     \ifthenelse{\value{dateinamen}=0}{}{\usebox{\dateiname}\,:\,\theorder\,:\,\RCSRevision \hfill}%
+     %^^A Fachangabe der gesamten Aufgabe schreiben >
+     \ifthenelse{\value{fachangabe}=0}{}{#1\hfill}%
+     %^^A Angaben zur Gruppe schreiben >
+     \ifthenelse{\value{gruppeninfohead}=0}{}%
+     {%
+%     \ifthenelse{\value{projektbezug}=0}{\keinprojekt}{}%
+%     \ifthenelse{\value{projektbezug}=1}{Pro}{}%
+%     \ifthenelse{\value{gruppeglobal}=1}{\,:\,A}{}%
+%     \ifthenelse{\value{gruppeglobal}=2}{\,:\,B}{}%
+%     \ifthenelse{\value{gruppeglobal}=3}{\,:\,C}{}%
+     \ifthenelse{\value{gruppeglobal}=1}{A}{}%
+     \ifthenelse{\value{gruppeglobal}=2}{B}{}%
+     \ifthenelse{\value{gruppeglobal}=3}{C}{}%
+     }%
+   \end{minipage} %^^A Ende Aufgabentitelbalken %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     \par
+     \nopagebreak %^^A Seitenumbruch nach Aufgabentitel versuchen zu verhindern:
+     \par 
+     %^^A \ifthenelse{\value{lockerer}=0}{}{   %^^A Variabler ?????
+     %^^A   \vspace{\lockererwert}}%           %^^A Zusatzabstand ?????
+    %^^A Abstand Aufgabentitelbalken - Aufgabenbeginn >
+    \ifthenelse{\value{dehnen}=0}{\vspace{2mm}}{\vspace{2mm} \medskip}%
+ }%^^A Aufgabenkopfzeile zeigen Ende
+ {}%sonst keine Aufgabenkopfzeile
+}%^^A Ende \begin{aufgabe}
+{%^^A Beginn \end{aufgabe}
+%% Pruefen ob bei vorheriger Teilaufgabe keine Loesung angegeben wurde 
+%% Linien zeigen, falls loesungs-Umgebung das nicht gemacht hat
+\ifthenelse{\value{nothing}=1}{}{%
+\ifthenelse{\value{vortext}=1}%
+{\begin{minipage}[t]{\aufgabenumbruchbreite}}
+{\hspace{3ex}\begin{minipage}[t]{\aufgabenumbruchbreite-3ex}}
+\drawrestoflines%
+\ifthenelse{\value{linierung}=1 \and \value{loesungslinienzeigen}=1}{% Mathe
+   \lkamathe[\value{loesungslinienanzahl}]%
+}{}%
+\end{minipage}
+}%
+\setcounter{punktebefehle}{0}%
+\keineloesung%
+\ifthenelse{\value{aufgabenfusszeile}=0}
+           {\vspace{5mm}}%^^A
+{%^^A  Aufgabenfusszeile zeigen Beginn
+  \par
+  %^^A Abstand um Aufgabenfusszeile nahe an die Aufgabe heranzuruecken:
+  %\vspace{-4.5mm} %^^A 
+  %^^A Abstand um Platz fuer Loesung zu schaffen:
+  %\ifthenelse{\value{loesungen}=1}%^^A wenn Loesungen angegeben wurden
+  %{\vspace{5.5mm}}%^^A Platz schaffen
+  %{}%^^A Sonst nix
+  \ifthenelse{\value{punktesummezeigen}=1}{% Beginn Punktesumme zeigen >
+  \par
+  \nopagebreak %^^A Verhindert (hoffe), dass Seite vor Fussbalken umbrochen wird
+  \par
+  %^^A %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %^^A Aufgabenfussbalken erzeugen: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{minipage}[t]{\aufgabentitelbreite}%^^A  Beginn des Aufgabenfussbalkens
+      %^^A Gruppeninformationen schreiben >
+  \ifthenelse{\value{gruppeninfo}=0}{}%
+     %%
+     %%
+     {%^^A Beginn Gruppeninfo >
+      %^^A Kasten fuer A >
+     \ifthenelse{\value{a}=1 \and \value{gruppe}=1}% a existent,aktiv
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{A}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{rosa}{\abcbox{\textbf{\underline{A}}}}}{}%
+         }{}%
+     \ifthenelse{\value{a}=1 \and \not \value{gruppe}=1}% a existent,inaktiv
+        {%
+        \ifthenelse{\value{c}=0 \and \value{gruppe}=3}%
+            {\textcolor{rot}{\abcbox{A}}}%
+            {\abcbox{A}}%
+     }{}
+     \ifthenelse{\value{a}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer B >
+     \ifthenelse{\value{b}=1 \and \value{gruppe}=2}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{B}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{lila}{\abcbox{\textbf{\underline{B}}}}}{}%
+        }{}%
+     \ifthenelse{\value{b}=1 \and \not \value{gruppe}=2}{\abcbox{B}}{}
+     \ifthenelse{\value{b}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer C >
+     \ifthenelse{\value{c}=1 \and \value{gruppe}=3}% c existent UND aktiv
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{C}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{rot}{\abcbox{\textbf{\underline{C}}}}}{}%
+         }{}%
+     \ifthenelse{\value{c}=1 \and \not \value{gruppe}=3}{\abcbox{C}}{}
+     \ifthenelse{\value{c}=0 \and \( \value{a}=1 \or \value{b}=1 \)}%
+        {%
+       \ifthenelse{\value{gruppe}=3}{\textcolor{rot}{\abcbox{---}}}{\abcbox{---}}%
+     }{}%
+     \ifthenelse{\value{a}=0 \and \value{b}=0 \and \value{c}=0}% weder a,b,c
+        {\abcbox{\textbf{\underline{C}}}}{}%
+     %^^A Kasten fuer D >
+     \ifthenelse{\value{d}=1 \and \value{gruppe}=4}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{D}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{orange}{\abcbox{\textbf{\underline{D}}}}}{}%
+         }{}%
+     \ifthenelse{\value{d}=1 \and \not \value{gruppe}=4}{\abcbox{D}}{}
+     \ifthenelse{\value{d}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer E >
+     \ifthenelse{\value{e}=1 \and \value{gruppe}=5}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{E}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{rosa2}{\abcbox{\textbf{\underline{E}}}}}{}%
+         }{}%
+     \ifthenelse{\value{e}=1 \and \not \value{gruppe}=5}{\abcbox{E}}{}
+     \ifthenelse{\value{e}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer F >
+     \ifthenelse{\value{f}=1 \and \value{gruppe}=6}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{F}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{lila2}{\abcbox{\textbf{\underline{F}}}}}{}%
+         }{}%
+     \ifthenelse{\value{f}=1 \and \not \value{gruppe}=6}{\abcbox{F}}{}
+     \ifthenelse{\value{f}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer G >
+     \ifthenelse{\value{g}=1 \and \value{gruppe}=7}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{G}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{rot2}{\abcbox{\textbf{\underline{G}}}}}{}%
+         }{}%
+     \ifthenelse{\value{g}=1 \and \not \value{gruppe}=7}{\abcbox{G}}{}
+     \ifthenelse{\value{g}=0}{\abcbox{---}}{}%
+      %^^A Kasten fuer H >
+     \ifthenelse{\value{h}=1 \and \value{gruppe}=8}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{H}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{orange2}{\abcbox{\textbf{\underline{H}}}}}{}%
+         }{}%
+     \ifthenelse{\value{h}=1 \and \not \value{gruppe}=8}{\abcbox{H}}{}
+     \ifthenelse{\value{h}=0}{\abcbox{---}}{}%
+     }%^^A Ende Gruppeninfo <
+     %%
+  \hfill
+  %^^A Projektinformationen schreiben >
+  \ifthenelse{\value{gruppeninfo}=0}{}%
+     Projekt:
+     {%^^A Beginn Gruppeninfo-Projekt >
+     %^^A Kasten fuer Projekt >
+     \ifthenelse{\value{projekt}=0}{\projektbox{---}}{}%
+     \ifthenelse{\value{projekt}=1 \and \value{projektbezug}=1}%
+        {\ifthenelse{\value{gruppeninfo}=1}%
+           {\textcolor{dunkelgrau}{\projektbox{Projekt}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{blau}{\projektbox{Pro}}}{}%
+        \hspace{1mm}}{}%
+  %^^A %\textcolor{blau}{\projektbox{Projekt}} \hspace{1mm}}{}%
+     \ifthenelse{\value{projekt}=1 \and \value{projektbezug}=0}%
+        {\ifthenelse{\value{gruppeninfo}=1}%
+           {\textcolor{dunkelgrau}{\projektbox{\keinprojekt}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{gruen}{\projektbox{\keinprojekt}}}{}%
+        \hspace{1mm}}{}%
+     }%^^A Ende Gruppeninfo-Projekt <
+  \hfill
+     %^^A Angaben zur Gesamtpunktzahl schreiben >
+   \ifthenelse{\value{punktzahlkasten}=0}{}%
+     {%
+     \fbox{\fusszeilenstuetze \textbf{\aufgabenmarkeuse{} % Leerzeichen wichtig
+        \arabic{aufgabennummer}\,: % 
+        \thepunktesumme{} Punkte}}
+     }%
+  \end{minipage}%^^A Ende Aufgabenfussbalken
+  \par
+  %^^A %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  }%^^A Ende Punktesumme zeigen
+  {}%^^A sonst nix
+  \vspace{3mm}  
+}%^^A Aufgabenfusszeile zeigen Ende
+%^^A Minipage schließen, die fuer Loesungserzeugung geoeffnet wurde
+\ifthenelse{\value{aufgabenstellung}=0 \and% Wenn Aufgabenstellung und
+            \value{loesungen}=1% Loesungen ausgegeben werden
+           }%
+   {% Dann, Beginn
+   %\end{minipage} End Minipage
+   }%
+   {}%
+%^^A Zaehler, die nur fuer eine Aufgabe gelten wieder Ruecksetzten >
+\setcounter{punktesumme}{0}%
+%^^A Zaehler die Anzeigen, ob Befehle a, b, ab, abc, projekt benutzt wurden
+%^^A duerfen *nicht* hier auf null gesetzt werden, da sie von \nehme, ... 
+%^^A gebraucht werden 
+\addtocounter{aufgabennummer}{1}%^^A Aufgabennummer  der KA erhoehen 
+\setcounter{ohneeins}{0}%^^A Keine Aufgabe soll ausgeblendet werden
+\setcounter{ohnezwei}{0}%^^A Keine Aufgabe soll ausgeblendet werden 
+\setcounter{ohnedrei}{0}%^^A Keine Aufgabe soll ausgeblendet werden
+\setcounter{order}{0}%^^A Reihenfolge wieder auf null setzen
+}
+%^^A Ende Umgebung aufgabe %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
 % \begin{examaufgabe}
 % \end{examaufgabe}
 \newenvironment{examaufgabe}[6][]{%% Begin \begin
