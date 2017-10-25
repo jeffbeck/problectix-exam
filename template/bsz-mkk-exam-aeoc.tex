@@ -337,7 +337,7 @@
 % \inputproject
 \newcommand{\inputproject}[1]{
     \renewcommand{\projectname}{#1}
-    \section*{Projektbeschreibung}\addtocontents{toc}{\vspace{3mm}\textbf{Projektbeschreibung}\par\vspace{2mm}}
+    \section*{Projektbeschreibung}\addtocontents{toc}{\vspace{-1mm}\textbf{Projektbeschreibung}\par\vspace{2mm}}
     \nehme{../projects/#1/#1.tex}
 }
 
@@ -355,10 +355,12 @@
     \nehme{../common/#1.tex}
 }
 
+
 % \projectincludegraphics
 \newcommand{\projectincludegraphics}[2][]{
     \includegraphics[#1]{../projects/\projectname/#2}\label{#2}
 }
+
 
 % \commonincludegraphics
 \newcommand{\commonincludegraphics}[2][]{
@@ -366,11 +368,11 @@
 }
 
 
-
 % \projectsection
 \newcommand{\projectsection}[1]{
 \subsection*{#1}\addtocontents{toc}{\hspace{5mm}#1\dotfill Seite \thepage\par}
 }
+
 
 % \projectanhang
 \newcommand{\projectanhang}[3][]{%
@@ -413,7 +415,7 @@
    }
 }
 
-
+\newcommand{\xpageref}[3][]{\ifthenelse{\value{xlsg}=1}{\pageref{#3}}{\pageref{#2}}}
 
 
 
@@ -451,7 +453,7 @@
     %\ifthenelse{\value{dateinamen}=0}{}{\usebox{\dateiname}\,:\,\theorder\,:\,\RCSRevision \hfill}%
     \ifthenelse{\value{fachangabe}=0}{}{#1\hfill}%
     \ifthenelse{\value{gruppeninfohead}=0}{}%
-   {%
+   {% 
     %% Gruppeninfo angeben
 %    \ifthenelse{\value{projektbezug}=0}{\keinprojekt}{}%
 %    \ifthenelse{\value{projektbezug}=1}{Pro}{}%
@@ -485,7 +487,7 @@
      \ifthenelse{\value{fachangabe}=0}{}{#1\hfill}%
      %^^A Angaben zur Gruppe schreiben >
      \ifthenelse{\value{gruppeninfohead}=0}{}%
-     {%
+     {% LSG
 %     \ifthenelse{\value{projektbezug}=0}{\keinprojekt}{}%
 %     \ifthenelse{\value{projektbezug}=1}{Pro}{}%
 %     \ifthenelse{\value{gruppeglobal}=1}{\,:\,A}{}%
