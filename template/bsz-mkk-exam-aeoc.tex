@@ -357,13 +357,22 @@
 
 
 % \projectincludegraphics
-\newcommand{\projectincludegraphics}[2][]{
+\newcommand{\projectincludegraphics}[2][]{%
     \includegraphics[#1]{../projects/\projectname/#2}\label{#2}
+}
+
+% \xprojectincludegraphics
+\newcommand{\xprojectincludegraphics}[3][]{%
+   \ifthenelse{\value{xlsg}=1}{%
+      \projectincludegraphics[#1]{#3}%
+   }{%
+      \projectincludegraphics[#1]{#2}%
+   }
 }
 
 
 % \commonincludegraphics
-\newcommand{\commonincludegraphics}[2][]{
+\newcommand{\commonincludegraphics}[2][]{%
     \includegraphics[#1]{../common/#2}\label{#2}
 }
 
