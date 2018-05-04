@@ -91,6 +91,9 @@
 % ROHR
 \newcounter{TopicTimeROHR}
 \newcounter{TopicTimeROHRMin}
+% REGLER
+\newcounter{TopicTimeREGLER}
+\newcounter{TopicTimeREGLERMin}
 % ET
 % SCHALTUNG
 \newcounter{TopicTimeSCHALTUNG}
@@ -107,6 +110,9 @@
 % ETSCHUTZ
 \newcounter{TopicTimeETSCHUTZ}
 \newcounter{TopicTimeETSCHUTZMin}
+% ETBAUTEILE
+\newcounter{TopicTimeETBAUTEILE}
+\newcounter{TopicTimeETBAUTEILEMin}
 % ZP
 % KREISLAUF
 \newcounter{TopicTimeKREISLAUF}
@@ -177,12 +183,14 @@
 \setcounter{TopicTimeCOPMin}{0}
 \setcounter{TopicTimeKUEHLTURMMin}{0}
 \setcounter{TopicTimeROHRMin}{0}
+\setcounter{TopicTimeREGLERMin}{0}
 % ET
 \setcounter{TopicTimeSCHALTUNGMin}{0}
 \setcounter{TopicTimeSCHALTPLANMin}{0}
 \setcounter{TopicTimeMOTORMin}{0}
 \setcounter{TopicTimeDREHSTROMMin}{0}
 \setcounter{TopicTimeETSCHUTZMin}{0}
+\setcounter{TopicTimeETBAUTEILEMin}{0}
 % ZP KT
 \setcounter{TopicTimeKREISLAUFMin}{0}
 \setcounter{TopicTimePRESSOSTATMin}{0}
@@ -232,12 +240,14 @@
 \setcounter{TopicTimeCOPMin}{0}
 \setcounter{TopicTimeKUEHLTURMMin}{0}
 \setcounter{TopicTimeROHRMin}{0}
+\setcounter{TopicTimeREGLERMin}{0}
 % ET
 \setcounter{TopicTimeSCHALTUNGMin}{20}
 \setcounter{TopicTimeSCHALTPLANMin}{20}
 \setcounter{TopicTimeMOTORMin}{20}
 \setcounter{TopicTimeDREHSTROMMin}{20}
 \setcounter{TopicTimeETSCHUTZMin}{20}
+\setcounter{TopicTimeETBAUTEILEMin}{0}
 % ZP KT
 \setcounter{TopicTimeKREISLAUFMin}{0}
 \setcounter{TopicTimePRESSOSTATMin}{0}
@@ -294,11 +304,13 @@
 \ifthenelse{\equal{#4}{COP}}{\addtocounter{TopicTimeCOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{KUEHLTURM}}{\addtocounter{TopicTimeKUEHLTURM}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{ROHR}}{\addtocounter{TopicTimeROHR}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{REGLER}}{\addtocounter{TopicTimeREGLER}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{SCHALTUNG}}{\addtocounter{TopicTimeSCHALTUNG}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{SCHALTPLAN}}{\addtocounter{TopicTimeSCHALTPLAN}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{MOTOR}}{\addtocounter{TopicTimeMOTOR}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{DREHSTROM}}{\addtocounter{TopicTimeDREHSTROM}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{ETSCHUTZ}}{\addtocounter{TopicTimeETSCHUTZ}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETBAUTEILE}}{\addtocounter{TopicTimeETBAUTEILE}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{KREISLAUF}}{\addtocounter{TopicTimeKREISLAUF}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{PRESSOSTAT}}{\addtocounter{TopicTimePRESSOSTAT}{#1}\stepcounter{NumberTopicsCounted}}{} 
 \ifthenelse{\equal{#4}{REFRIG}}{\addtocounter{TopicTimeREFRIG}{#1}\stepcounter{NumberTopicsCounted}}{} 
