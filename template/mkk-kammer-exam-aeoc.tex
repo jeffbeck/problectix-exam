@@ -148,15 +148,15 @@
 \newcommand{\ExamWhich}{--- none ---}
 
 
-% BT1
-\newcommand{\BTone}[1]{
-\School{BSZ Leonberg}
-\Titelu{Berufstheorie \MakeUppercase{\romannumeral 1}}
+% Part 1, Abschlussprüfung Teil 1
+\newcommand{\Partone}[1]{
+\School{Landesinnung Kälte-Klima-Technik}
+\Titelu{Abschl.prüf. Teil 1}
 \Beruf{Mechatroniker/-in für Kältetechnik}
 \Bereich{Kältetechnik}
 %
-\ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{\Entwurf{BT1-Entwurf}} 
-\renewcommand{\ExamWhich}{\textbf{BT\,1}}
+\ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{\Entwurf{Teil-1-Entwurf}} 
+\renewcommand{\ExamWhich}{\textbf{Teil\,1}}
 % counters
 \setcounter{TimeTotalOK}{130}% incl. aller Wahlaufgaben
 \setcounter{TimeTotalOKdisplay}{120}
@@ -203,64 +203,6 @@
 \setcounter{TopicTimeETSYMBOLEMin}{0}
 \setcounter{TopicTimeETKOSTENMin}{0}
 }
-
-
-% BT2
-\newcommand{\BTtwo}[1]{
-\School{BSZ Leonberg}
-\Titelu{Berufstheorie \MakeUppercase{\romannumeral 2}}
-\Beruf{Mechatroniker/-in für Kältetechnik}
-\Bereich{Kälte-, Klima- und Elektrotechnik}
-%
-\ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{\Entwurf{BT2-Entwurf}} 
-\renewcommand{\ExamWhich}{\textbf{BT\,2}}
-% counters
-\setcounter{TimeTotalOK}{130}
-\setcounter{TimeTotalOKdisplay}{120}
-\setcounter{TimeTotalETOK}{60}
-\setcounter{TimeTotalKTOK}{0}
-\setcounter{TimeTotalKLOK}{40}
-\setcounter{TimeTotalWAOK}{30}
-\setcounter{TimeTotalWAOKdisplay}{20}
-\setcounter{TimeTotalPFOK}{100}
-\setcounter{NumberTotalWAOK}{3}
-\setcounter{NumberTotalWASelect}{2}
-\setcounter{TimeWAErrorOK}{0}
-% TopicTime counters
-% KT
-\setcounter{TopicTimeHLOGPMin}{0}
-\setcounter{TopicTimeHXMin}{20}
-\setcounter{TopicTimeRIMin}{0}
-\setcounter{TopicTimeKTFUNKTIONMin}{0}
-\setcounter{TopicTimeWUMin}{0}
-\setcounter{TopicTimeVERDICHTERMin}{0}
-\setcounter{TopicTimeLUFTMin}{20}
-\setcounter{TopicTimeMOPMin}{0}
-\setcounter{TopicTimeABTAUUNGMin}{0}
-\setcounter{TopicTimeCOPMin}{0}
-\setcounter{TopicTimeKUEHLTURMMin}{0}
-\setcounter{TopicTimeROHRMin}{0}
-\setcounter{TopicTimeREGLERMin}{0}
-% ET
-\setcounter{TopicTimeSCHALTUNGMin}{20}
-\setcounter{TopicTimeSCHALTPLANMin}{20}
-\setcounter{TopicTimeMOTORMin}{20}
-\setcounter{TopicTimeDREHSTROMMin}{20}
-\setcounter{TopicTimeETSCHUTZMin}{20}
-\setcounter{TopicTimeETBAUTEILEMin}{0}
-% ZP KT
-\setcounter{TopicTimeKREISLAUFMin}{0}
-\setcounter{TopicTimePRESSOSTATMin}{0}
-\setcounter{TopicTimeREFRIGMin}{0}
-\setcounter{TopicTimeGESLAENGEMin}{0}
-\setcounter{TopicTimeISOMETRIEMin}{0}
-\setcounter{TopicTimeWAERMEMin}{0}
-% ZP ET
-\setcounter{TopicTimeETBASISMin}{0}
-\setcounter{TopicTimeETSYMBOLEMin}{0}
-\setcounter{TopicTimeETKOSTENMin}{0}
-}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -706,18 +648,18 @@
 % \end{examaufgabe}
 \newenvironment{examaufgabe}[6][]{%% Begin \begin
 \examinfo{#3}{#4}{#5}{#6}%
-% tableofcontents-header if WA,PF is switched
-\ifthenelse{\equal{#5}{PF}}{%
-    \ifthenelse{\theLatestMust=1}%
-               {}%
-               {\pagebreak\section*{Teil 1: Projekt-Pflichtaufgaben (\theTimeTotalPFOK{} Minuten)}\addtocontents{toc}{\vspace{3mm}\textbf{Teil 1: Projekt-Pflichtaufgaben} (\theTimeTotalPFOK{} Minuten)\par}}\setcounter{LatestMust}{1}%
-}{}%
-\ifthenelse{\equal{#5}{WA}}{%
-    \ifthenelse{\theLatestMust=2}%
-               {}%
-               {\pagebreak\section*{Teil 2: Wahlaufgaben (\theTimeTotalWAOKdisplay{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)}%
-                \addtocontents{toc}{\vspace{3mm}\textbf{Teil 2: Wahlaufgaben} (\theTimeTotalWAOKdisplay{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufg. bearbeiten)\par}}\setcounter{LatestMust}{2}%
-}{}%  
+% % tableofcontents-header if WA,PF is switched
+% \ifthenelse{\equal{#5}{PF}}{%
+%     \ifthenelse{\theLatestMust=1}%
+%                {}%
+%                {\pagebreak\section*{Teil 1: Projekt-Pflichtaufgaben (\theTimeTotalPFOK{} Minuten)}\addtocontents{toc}{\vspace{3mm}\textbf{Teil 1: Projekt-Pflichtaufgaben} (\theTimeTotalPFOK{} Minuten)\par}}\setcounter{LatestMust}{1}%
+% }{}%
+% \ifthenelse{\equal{#5}{WA}}{%
+%     \ifthenelse{\theLatestMust=2}%
+%                {}%
+%                {\pagebreak\section*{Teil 2: Wahlaufgaben (\theTimeTotalWAOKdisplay{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)}%
+%                 \addtocontents{toc}{\vspace{3mm}\textbf{Teil 2: Wahlaufgaben} (\theTimeTotalWAOKdisplay{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufg. bearbeiten)\par}}\setcounter{LatestMust}{2}%
+% }{}%  
 % tableofcontents-header if KT,KL,ET is switched
 \ifthenelse{\equal{#4}{KT}}{%
     \ifthenelse{\theLatestCategory=1}%
