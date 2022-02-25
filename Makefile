@@ -15,4 +15,5 @@ install:
 	install -oroot -groot --mode=0644 template/*-abd.tex $(TEX)
 	install -oroot -groot --mode=0644 template/*-aed.tex $(TEX)
 	install -oroot -groot --mode=0644 template/*-aeoc.tex $(TEX)
+	install -oroot -groot --mode=0644 template/innung.eps $(TEX)
 	texhash

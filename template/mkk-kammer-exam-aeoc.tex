@@ -1,0 +1,749 @@
+\renewcommand{\mytemplate}{bsz-mkk-exam}
+\renewcommand*\contentsname{Prüfungsinhalt}
+\newcommand{\projectname}{}
+
+% remember the categorie of the problem before
+% KT: 1
+% KL: 2
+% ET: 3
+\newcounter{LatestCategory}
+% remember WA/PF
+% PF: 1
+% WA: 2
+\newcounter{LatestMust}
+
+% counter Wahlaufgaben
+\newcounter{ModeFinal}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BT counters
+% total time counters
+\newcounter{TimeTotal}
+\newcounter{TimeTotalOK}% Minuten Gesamt
+\newcounter{TimeTotalOKdisplay}% Minuten Gesamt anzuzeigen
+
+\newcounter{TimeTotalET}
+\newcounter{TimeTotalETOK}% Minuten Elektrotechnik
+
+\newcounter{TimeTotalKT}
+\newcounter{TimeTotalKTOK}% Minuten Kältetechnik
+
+\newcounter{TimeTotalKL}
+\newcounter{TimeTotalKLOK}% Minuten Klimatechnik
+
+\newcounter{TimeTotalPF}
+\newcounter{TimeTotalPFOK}% Minuten Pflichtaufgaben
+
+\newcounter{TimeTotalWA}
+\newcounter{TimeTotalWAOK}% Minuten Wahlaufgaben
+\newcounter{TimeTotalWAOKdisplay}% Minuten Wahlaufgaben anzuzeigen
+
+\newcounter{TimeWAError}
+\newcounter{TimeWAErrorOK}
+\newcounter{TimeWAOK}
+\setcounter{TimeWAOK}{10}% Minuten einer Wahlaufgabe
+
+% other counters
+\newcounter{NumberTotalWA}
+\newcounter{NumberTotalWAOK}% Anzahl Wahlaufgaben
+\newcounter{NumberTotalWASelect}% Anzahl zu wählender Wahlaufgaben
+
+% count how often TopicTime<TOPIC> was updated
+\newcounter{NumberTopicsCounted}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TopicTimeCounter
+% TopicTimeTOPICNAME
+% HLOGP
+\newcounter{TopicTimeHLOGP}
+\newcounter{TopicTimeHLOGPMin}
+% HX
+\newcounter{TopicTimeHX}
+\newcounter{TopicTimeHXMin}
+% RI
+\newcounter{TopicTimeRI}
+\newcounter{TopicTimeRIMin}
+% KTFUNKTION
+\newcounter{TopicTimeKTFUNKTION}
+\newcounter{TopicTimeKTFUNKTIONMin}
+% WU
+\newcounter{TopicTimeWU}
+\newcounter{TopicTimeWUMin}
+% VERDICHTER
+\newcounter{TopicTimeVERDICHTER}
+\newcounter{TopicTimeVERDICHTERMin}
+% LUFT
+\newcounter{TopicTimeLUFT}
+\newcounter{TopicTimeLUFTMin}
+% MOP
+\newcounter{TopicTimeMOP}
+\newcounter{TopicTimeMOPMin}
+% ABTAUUNG
+\newcounter{TopicTimeABTAUUNG}
+\newcounter{TopicTimeABTAUUNGMin}
+% COP
+\newcounter{TopicTimeCOP}
+\newcounter{TopicTimeCOPMin}
+% KUEHLTURM
+\newcounter{TopicTimeKUEHLTURM}
+\newcounter{TopicTimeKUEHLTURMMin}
+% ROHR
+\newcounter{TopicTimeROHR}
+\newcounter{TopicTimeROHRMin}
+% REGLER
+\newcounter{TopicTimeREGLER}
+\newcounter{TopicTimeREGLERMin}
+% ET
+% SCHALTUNG
+\newcounter{TopicTimeSCHALTUNG}
+\newcounter{TopicTimeSCHALTUNGMin}
+% SCHALTPLAN
+\newcounter{TopicTimeSCHALTPLAN}
+\newcounter{TopicTimeSCHALTPLANMin}
+% MOTOR
+\newcounter{TopicTimeMOTOR}
+\newcounter{TopicTimeMOTORMin}
+% DREHSTROM
+\newcounter{TopicTimeDREHSTROM}
+\newcounter{TopicTimeDREHSTROMMin}
+% ETSCHUTZ
+\newcounter{TopicTimeETSCHUTZ}
+\newcounter{TopicTimeETSCHUTZMin}
+% ETBAUTEILE
+\newcounter{TopicTimeETBAUTEILE}
+\newcounter{TopicTimeETBAUTEILEMin}
+% ZP
+% KREISLAUF
+\newcounter{TopicTimeKREISLAUF}
+\newcounter{TopicTimeKREISLAUFMin}
+% PRESSOSTAT
+\newcounter{TopicTimePRESSOSTAT}
+\newcounter{TopicTimePRESSOSTATMin}
+% REFRIG
+\newcounter{TopicTimeREFRIG}
+\newcounter{TopicTimeREFRIGMin}
+% GESLAENGE
+\newcounter{TopicTimeGESLAENGE}
+\newcounter{TopicTimeGESLAENGEMin}
+% ISOMETRIE
+\newcounter{TopicTimeISOMETRIE}
+\newcounter{TopicTimeISOMETRIEMin}
+% WAERME
+\newcounter{TopicTimeWAERME}
+\newcounter{TopicTimeWAERMEMin}
+% ETBASIS
+\newcounter{TopicTimeETBASIS}
+\newcounter{TopicTimeETBASISMin}
+% ETSYMBOLE
+\newcounter{TopicTimeETSYMBOLE}
+\newcounter{TopicTimeETSYMBOLEMin}
+% ETKOSTEN
+\newcounter{TopicTimeETKOSTEN}
+\newcounter{TopicTimeETKOSTENMin}
+
+
+
+% setzen der Zähler mit ... \BTone oder \BTtwo
+\newcommand{\ExamWhich}{--- none ---}
+
+
+% BT1
+\newcommand{\BTone}[1]{
+\School{BSZ Leonberg}
+\Titelu{Berufstheorie \MakeUppercase{\romannumeral 1}}
+\Beruf{Mechatroniker/-in für Kältetechnik}
+\Bereich{Kältetechnik}
+%
+\ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{\Entwurf{BT1-Entwurf}} 
+\renewcommand{\ExamWhich}{\textbf{BT\,1}}
+% counters
+\setcounter{TimeTotalOK}{130}% incl. aller Wahlaufgaben
+\setcounter{TimeTotalOKdisplay}{120}
+\setcounter{TimeTotalETOK}{0}
+\setcounter{TimeTotalKTOK}{130}
+\setcounter{TimeTotalKLOK}{0}
+\setcounter{TimeTotalWAOK}{30}
+\setcounter{TimeTotalWAOKdisplay}{20}
+\setcounter{TimeTotalPFOK}{100}
+\setcounter{NumberTotalWAOK}{3}
+\setcounter{NumberTotalWASelect}{2}
+\setcounter{TimeWAErrorOK}{0}
+% TopicTime counters
+% KT
+\setcounter{TopicTimeHLOGPMin}{20}
+\setcounter{TopicTimeHXMin}{0}
+\setcounter{TopicTimeRIMin}{20}
+\setcounter{TopicTimeKTFUNKTIONMin}{0}
+\setcounter{TopicTimeWUMin}{20}
+\setcounter{TopicTimeVERDICHTERMin}{20}
+\setcounter{TopicTimeLUFTMin}{0}
+\setcounter{TopicTimeMOPMin}{0}
+\setcounter{TopicTimeABTAUUNGMin}{0}
+\setcounter{TopicTimeCOPMin}{0}
+\setcounter{TopicTimeKUEHLTURMMin}{0}
+\setcounter{TopicTimeROHRMin}{0}
+\setcounter{TopicTimeREGLERMin}{0}
+% ET
+\setcounter{TopicTimeSCHALTUNGMin}{0}
+\setcounter{TopicTimeSCHALTPLANMin}{0}
+\setcounter{TopicTimeMOTORMin}{0}
+\setcounter{TopicTimeDREHSTROMMin}{0}
+\setcounter{TopicTimeETSCHUTZMin}{0}
+\setcounter{TopicTimeETBAUTEILEMin}{0}
+% ZP KT
+\setcounter{TopicTimeKREISLAUFMin}{0}
+\setcounter{TopicTimePRESSOSTATMin}{0}
+\setcounter{TopicTimeREFRIGMin}{0}
+\setcounter{TopicTimeGESLAENGEMin}{0}
+\setcounter{TopicTimeISOMETRIEMin}{0}
+\setcounter{TopicTimeWAERMEMin}{0}
+% ZP ET
+\setcounter{TopicTimeETBASISMin}{0}
+\setcounter{TopicTimeETSYMBOLEMin}{0}
+\setcounter{TopicTimeETKOSTENMin}{0}
+}
+
+
+% BT2
+\newcommand{\BTtwo}[1]{
+\School{BSZ Leonberg}
+\Titelu{Berufstheorie \MakeUppercase{\romannumeral 2}}
+\Beruf{Mechatroniker/-in für Kältetechnik}
+\Bereich{Kälte-, Klima- und Elektrotechnik}
+%
+\ifthenelse{\equal{#1}{final}}{\setcounter{ModeFinal}{1}}{\Entwurf{BT2-Entwurf}} 
+\renewcommand{\ExamWhich}{\textbf{BT\,2}}
+% counters
+\setcounter{TimeTotalOK}{130}
+\setcounter{TimeTotalOKdisplay}{120}
+\setcounter{TimeTotalETOK}{60}
+\setcounter{TimeTotalKTOK}{0}
+\setcounter{TimeTotalKLOK}{40}
+\setcounter{TimeTotalWAOK}{30}
+\setcounter{TimeTotalWAOKdisplay}{20}
+\setcounter{TimeTotalPFOK}{100}
+\setcounter{NumberTotalWAOK}{3}
+\setcounter{NumberTotalWASelect}{2}
+\setcounter{TimeWAErrorOK}{0}
+% TopicTime counters
+% KT
+\setcounter{TopicTimeHLOGPMin}{0}
+\setcounter{TopicTimeHXMin}{20}
+\setcounter{TopicTimeRIMin}{0}
+\setcounter{TopicTimeKTFUNKTIONMin}{0}
+\setcounter{TopicTimeWUMin}{0}
+\setcounter{TopicTimeVERDICHTERMin}{0}
+\setcounter{TopicTimeLUFTMin}{20}
+\setcounter{TopicTimeMOPMin}{0}
+\setcounter{TopicTimeABTAUUNGMin}{0}
+\setcounter{TopicTimeCOPMin}{0}
+\setcounter{TopicTimeKUEHLTURMMin}{0}
+\setcounter{TopicTimeROHRMin}{0}
+\setcounter{TopicTimeREGLERMin}{0}
+% ET
+\setcounter{TopicTimeSCHALTUNGMin}{20}
+\setcounter{TopicTimeSCHALTPLANMin}{20}
+\setcounter{TopicTimeMOTORMin}{20}
+\setcounter{TopicTimeDREHSTROMMin}{20}
+\setcounter{TopicTimeETSCHUTZMin}{20}
+\setcounter{TopicTimeETBAUTEILEMin}{0}
+% ZP KT
+\setcounter{TopicTimeKREISLAUFMin}{0}
+\setcounter{TopicTimePRESSOSTATMin}{0}
+\setcounter{TopicTimeREFRIGMin}{0}
+\setcounter{TopicTimeGESLAENGEMin}{0}
+\setcounter{TopicTimeISOMETRIEMin}{0}
+\setcounter{TopicTimeWAERMEMin}{0}
+% ZP ET
+\setcounter{TopicTimeETBASISMin}{0}
+\setcounter{TopicTimeETSYMBOLEMin}{0}
+\setcounter{TopicTimeETKOSTENMin}{0}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \examinfo
+% zusatzbefehl in aufgabenumgebung
+\newcounter{ExamInfo}
+\setcounter{ExamInfo}{0}
+\newcommand{\examinfo}[4]{
+% step a counter to check if this command is issued in every aufgabe
+\stepcounter{ExamInfo}
+% step other counters 
+% time counter in min
+\addtocounter{TimeTotal}{#1}
+% KT/KL/ET
+\ifthenelse{\equal{#2}{KT}}{\addtocounter{TimeTotalKT}{#1}}{} 
+\ifthenelse{\equal{#2}{KL}}{\addtocounter{TimeTotalKL}{#1}}{} 
+\ifthenelse{\equal{#2}{ET}}{\addtocounter{TimeTotalET}{#1}}{} 
+%
+% WA/PF
+\ifthenelse{\equal{#3}{WA}}{\addtocounter{TimeTotalWA}{#1}}{} 
+\ifthenelse{\equal{#3}{PF}}{\addtocounter{TimeTotalPF}{#1}}{} 
+% Minuten Wahlaufgaben OK 
+\ifthenelse{\equal{#3}{WA}}{%
+    \ifthenelse{\value{TimeWAOK}=#1}{}{\stepcounter{TimeWAError}}
+}{} 
+% Anzahl Wahlaufgaben OK 
+\ifthenelse{\equal{#3}{WA}}{\stepcounter{NumberTotalWA}}{}
+%
+% TopicTime counter
+\ifthenelse{\equal{#4}{HLOGP}}{\addtocounter{TopicTimeHLOGP}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{HX}}{\addtocounter{TopicTimeHX}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{RI}}{\addtocounter{TopicTimeRI}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{KTFUNKTION}}{\addtocounter{TopicTimeKTFUNKTION}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{WU}}{\addtocounter{TopicTimeWU}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{VERDICHTER}}{\addtocounter{TopicTimeVERDICHTER}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{LUFT}}{\addtocounter{TopicTimeLUFT}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{MOP}}{\addtocounter{TopicTimeMOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ABTAUUNG}}{\addtocounter{TopicTimeABTAUUNG}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{COP}}{\addtocounter{TopicTimeCOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{KUEHLTURM}}{\addtocounter{TopicTimeKUEHLTURM}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ROHR}}{\addtocounter{TopicTimeROHR}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{REGLER}}{\addtocounter{TopicTimeREGLER}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{SCHALTUNG}}{\addtocounter{TopicTimeSCHALTUNG}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{SCHALTPLAN}}{\addtocounter{TopicTimeSCHALTPLAN}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{MOTOR}}{\addtocounter{TopicTimeMOTOR}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{DREHSTROM}}{\addtocounter{TopicTimeDREHSTROM}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETSCHUTZ}}{\addtocounter{TopicTimeETSCHUTZ}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETBAUTEILE}}{\addtocounter{TopicTimeETBAUTEILE}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{KREISLAUF}}{\addtocounter{TopicTimeKREISLAUF}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{PRESSOSTAT}}{\addtocounter{TopicTimePRESSOSTAT}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{REFRIG}}{\addtocounter{TopicTimeREFRIG}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{GESLAENGE}}{\addtocounter{TopicTimeGESLAENGE}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ISOMETRIE}}{\addtocounter{TopicTimeISOMETRIE}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{WAERME}}{\addtocounter{TopicTimeWAERME}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETBASIS}}{\addtocounter{TopicTimeETBASIS}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETSYMBOLE}}{\addtocounter{TopicTimeETSYMBOLE}{#1}\stepcounter{NumberTopicsCounted}}{} 
+\ifthenelse{\equal{#4}{ETKOSTEN}}{\addtocounter{TopicTimeETKOSTEN}{#1}\stepcounter{NumberTopicsCounted}}{} 
+}
+
+
+
+% \Beruf
+\newcommand{\berufuse}[2][]{
+  \ifthenelse{\value{debuggen}=1}{%
+    \hspace{-1ex}\textcolor{red}{\texttt{\textbackslash Beruf\{\}\hspace{-1ex}}}%
+  }{\xspace}
+}
+\newcommand{\Beruf}[2][]{%
+  \ifthenelse{\value{debuggen}=1}{}{\renewcommand{\berufuse}[2][]{#2}}
+}
+
+% \Bereich
+\newcommand{\bereichuse}[2][]{
+  \ifthenelse{\value{debuggen}=1}{%
+    \hspace{-1ex}\textcolor{red}{\texttt{\textbackslash Bereich\{\}\hspace{-1ex}}}%
+  }{\xspace}
+}
+\newcommand{\Bereich}[2][]{%
+  \ifthenelse{\value{debuggen}=1}{}{\renewcommand{\bereichuse}[2][]{#2}}
+}
+
+
+
+% \inputproject
+\newcommand{\inputproject}[1]{
+    \renewcommand{\projectname}{#1}
+    \section*{Projektbeschreibung}\addtocontents{toc}{\vspace{-1mm}\textbf{Projektbeschreibung}\par\vspace{2mm}}
+    \nehme{../projects/#1/#1.tex}
+}
+
+
+
+% \inputproblem
+\newcommand{\inputproblem}[1]{
+    \nehme{../projects/\projectname/#1.tex}
+}
+
+
+
+% \inputcommon
+\newcommand{\inputcommon}[1]{
+    \nehme{../common/#1.tex}
+}
+
+
+% \projectincludegraphics
+\newcommand{\projectincludegraphics}[2][]{%
+    \includegraphics[#1]{../projects/\projectname/#2}\label{#2}
+}
+
+% \xprojectincludegraphics
+\newcommand{\xprojectincludegraphics}[3][]{%
+   \ifthenelse{\value{xlsg}=1}{%
+      \projectincludegraphics[#1]{#3}%
+   }{%
+      \projectincludegraphics[#1]{#2}%
+   }
+}
+
+
+% \commonincludegraphics
+\newcommand{\commonincludegraphics}[2][]{%
+    \includegraphics[#1]{../common/#2}\label{#2}
+}
+
+
+% \projectsection
+\newcommand{\projectsection}[1]{
+\subsection*{#1}\addtocontents{toc}{\hspace{5mm}#1\dotfill Seite \thepage\par}
+}
+
+
+% \projectanhang
+\newcommand{\projectanhang}[3][]{%
+   %% counting the references in the main material
+   \stepcounter{mainpage}%
+   \Alph{mainpage}% this is printed
+   \AtEndDocument{%
+      \stepcounter{apppage}
+      \addtocontents{toc}{Anhang \Alph{apppage}: \, #2 \dotfill Seite \thepage \par}
+      \ifthenelse{\value{xlsg}=1}{% green
+          \chead{\textcolor{xlsgcolor}{\textbf{Anhang \Alph{apppage}: #2}}\hspace{20mm}}
+      }{% black
+          \chead{\textbf{Anhang \Alph{apppage}: #2}\hspace{20mm}}
+      }
+      \vspace*{\fill}
+      %% dirty hack to keep the graphic on one page, when textheight 
+      \enlargethispage{4mm}
+      \vspace{-12mm}
+      %% dirty hack end
+      \begin{center}\label{#3}\label{\Alph{apppage}}
+      \ifthenelse{\equal{#1}{}}{
+          \includepsfraggraphics
+            [width=\textwidth,height=\textheight,keepaspectratio]{../projects/\projectname/#3}
+      }{\includepsfraggraphics[#1]{../projects/\projectname/#3}}
+      \end{center}
+      \vspace*{\fill}
+      \clearpage
+      \AtEndDocument{% von lastpage.sty angepasst an verylastpage
+      \message{AED: command anhang is setting a label for verylastpage}%
+      \clearpage\verylastpage@putlabel}%
+   }%
+}
+
+
+\newcommand{\xprojectanhang}[4][]{%
+   \ifthenelse{\value{xlsg}=1}{%
+      \projectanhang[#1]{#2}{#4}%
+   }{%
+      \projectanhang[#1]{#2}{#3}%
+   }%
+}
+
+\newcommand{\xpageref}[3][]{\ifthenelse{\value{xlsg}=1}{\pageref{#3}}{\pageref{#2}}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewenvironment{aufgabe}[2][]{%% Begin \begin
+\setcounter{loesungslinienanzahl}{0}%
+\setcounter{punktebefehle}{0}%
+\setcounter{nothing}{1}%
+%^^A Noch keinen Loesungsbefehl innerhalb von Aufgabe ausgefuehrt:
+\setcounter{ersteloesunginaufgabe}{0}%
+\setcounter{teilaufgabenloesung}{1}%^^A Verhindert, dass in der ersten
+%^^A teilaufgabe fehlende Loesung vermutet wird
+%^^A Nummerierung der Textbloecke auf 0 stellen
+\setcounter{textblocknummerreal}{0}
+\setcounter{teilaufgabennummer}{0}%^^A Zaehlererhoehung in teilaufgabe-Umgebung
+\setcounter{teilaufgabennummerreal}{0}%^^A
+%^^A Zaehler die Anzeigen, ob Befehle a, b, ab, abc, projekt benutzt wurden > 
+\setcounter{a}{0}\setcounter{b}{0}\setcounter{c}{0}\setcounter{projekt}{0}%
+%^^A Kopfzeilen:
+%^^A Kopfzeile Loesung, BEGINN
+\ifthenelse{\value{loesungen}=1 \and%
+   \value{aufgabenstellung}=0% 
+   }%
+   {\vspace{3.5mm}
+    \begin{minipage}[t]{\aufgabentitelbreite}
+    \begin{picture}(0,0)% unbemerkbares Bild mit Abgrenzungslinie zur Voraufgabe
+       \thicklines                 %% Breie Linien
+       \put(0,5){\line(1,0){175}}  %% Linie Zeichnen
+    \end{picture}%
+    \textbf{\aufgabenmarkeuse{} \arabic{aufgabennummer}\,: #2}      
+    \ifthenelse{\value{aufgabentitel}=0}{}{\textbf{#2}}\hfill%
+    %\ifthenelse{\value{dateinamen}=0}{}{\usebox{\dateiname}\,:\,\theorder\,:\,\RCSRevision \hfill}%
+    \ifthenelse{\value{fachangabe}=0}{}{#1\hfill}%
+    \ifthenelse{\value{gruppeninfohead}=0}{}%
+   {% 
+    %% Gruppeninfo angeben
+%    \ifthenelse{\value{projektbezug}=0}{\keinprojekt}{}%
+%    \ifthenelse{\value{projektbezug}=1}{Pro}{}%
+%    \ifthenelse{\value{gruppeglobal}=1}{\,:\,A}{}%
+%    \ifthenelse{\value{gruppeglobal}=2}{\,:\,B}{}%
+%    \ifthenelse{\value{gruppeglobal}=3}{\,:\,C}{}%
+    \ifthenelse{\value{gruppeglobal}=1}{A}{}%
+    \ifthenelse{\value{gruppeglobal}=2}{B}{}%
+    \ifthenelse{\value{gruppeglobal}=3}{C}{}%
+   }%
+    \end{minipage}
+    \par
+    \vspace{1.5mm}
+   } 
+   {}%
+%^^A Kopfzeile Loesung, ENDE
+%^^A Kopfzeile Aufgabe, BEGINN
+\ifthenelse{\value{aufgabenkopfzeile}=1}%
+ {%^^A  Aufgabenkopfzeile zeigen Beginn
+   \par
+   %^^A Abstand Voriges Aufgabenende - Aufgabentitelbalken >
+   \ifthenelse{\value{dehnen}=0}{\vspace{0mm}}{\vspace{0mm} \bigskip}%   
+   %^^A Aufgabentitelbalken erzeugen: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+   \begin{minipage}[t]{\aufgabentitelbreite}  %^^A Beginn Aufgabentitelbalken
+     \textbf{\aufgabenmarkeuse{} \arabic{aufgabennummer}\,: }%
+     %^^A Aufgabentitel schreiben >
+     \ifthenelse{\value{aufgabentitel}=0}{}{\textbf{#2}}\hfill%
+     %^^A Dateinamen schreiben >
+%     \ifthenelse{\value{dateinamen}=0}{}{\usebox{\dateiname}\,:\,\theorder\,:\,\RCSRevision \hfill}%
+     %^^A Fachangabe der gesamten Aufgabe schreiben >
+     \ifthenelse{\value{fachangabe}=0}{}{#1\hfill}%
+     %^^A Angaben zur Gruppe schreiben >
+     \ifthenelse{\value{gruppeninfohead}=0}{}%
+     {% LSG
+%     \ifthenelse{\value{projektbezug}=0}{\keinprojekt}{}%
+%     \ifthenelse{\value{projektbezug}=1}{Pro}{}%
+%     \ifthenelse{\value{gruppeglobal}=1}{\,:\,A}{}%
+%     \ifthenelse{\value{gruppeglobal}=2}{\,:\,B}{}%
+%     \ifthenelse{\value{gruppeglobal}=3}{\,:\,C}{}%
+     \ifthenelse{\value{gruppeglobal}=1}{A}{}%
+     \ifthenelse{\value{gruppeglobal}=2}{B}{}%
+     \ifthenelse{\value{gruppeglobal}=3}{C}{}%
+     }%
+   \end{minipage} %^^A Ende Aufgabentitelbalken %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     \par
+     \nopagebreak %^^A Seitenumbruch nach Aufgabentitel versuchen zu verhindern:
+     \par 
+     %^^A \ifthenelse{\value{lockerer}=0}{}{   %^^A Variabler ?????
+     %^^A   \vspace{\lockererwert}}%           %^^A Zusatzabstand ?????
+    %^^A Abstand Aufgabentitelbalken - Aufgabenbeginn >
+    \ifthenelse{\value{dehnen}=0}{\vspace{2mm}}{\vspace{2mm} \medskip}%
+ }%^^A Aufgabenkopfzeile zeigen Ende
+ {}%sonst keine Aufgabenkopfzeile
+}%^^A Ende \begin{aufgabe}
+{%^^A Beginn \end{aufgabe}
+%% Pruefen ob bei vorheriger Teilaufgabe keine Loesung angegeben wurde 
+%% Linien zeigen, falls loesungs-Umgebung das nicht gemacht hat
+\ifthenelse{\value{nothing}=1}{}{%
+\ifthenelse{\value{vortext}=1}%
+{\begin{minipage}[t]{\aufgabenumbruchbreite}}
+{\hspace{3ex}\begin{minipage}[t]{\aufgabenumbruchbreite-3ex}}
+\drawrestoflines%
+\ifthenelse{\value{linierung}=1 \and \value{loesungslinienzeigen}=1}{% Mathe
+   \lkamathe[\value{loesungslinienanzahl}]%
+}{}%
+\end{minipage}
+}%
+\setcounter{punktebefehle}{0}%
+\keineloesung%
+\ifthenelse{\value{aufgabenfusszeile}=0}
+           {\vspace{5mm}}%^^A
+{%^^A  Aufgabenfusszeile zeigen Beginn
+  \par
+  %^^A Abstand um Aufgabenfusszeile nahe an die Aufgabe heranzuruecken:
+  %\vspace{-4.5mm} %^^A 
+  %^^A Abstand um Platz fuer Loesung zu schaffen:
+  %\ifthenelse{\value{loesungen}=1}%^^A wenn Loesungen angegeben wurden
+  %{\vspace{5.5mm}}%^^A Platz schaffen
+  %{}%^^A Sonst nix
+  \ifthenelse{\value{punktesummezeigen}=1}{% Beginn Punktesumme zeigen >
+  \par
+  \nopagebreak %^^A Verhindert (hoffe), dass Seite vor Fussbalken umbrochen wird
+  \par
+  %^^A %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %^^A Aufgabenfussbalken erzeugen: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{minipage}[t]{\aufgabentitelbreite}%^^A  Beginn des Aufgabenfussbalkens
+      %^^A Gruppeninformationen schreiben >
+  \ifthenelse{\value{gruppeninfo}=0}{}%
+     %%
+     %%
+     {%^^A Beginn Gruppeninfo >
+      %^^A Kasten fuer A >
+     \ifthenelse{\value{a}=1 \and \value{gruppe}=1}% a existent,aktiv
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{A}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{rosa}{\abcbox{\textbf{\underline{A}}}}}{}%
+         }{}%
+     \ifthenelse{\value{a}=1 \and \not \value{gruppe}=1}% a existent,inaktiv
+        {%
+        \ifthenelse{\value{c}=0 \and \value{gruppe}=3}%
+            {\textcolor{rot}{\abcbox{A}}}%
+            {\abcbox{A}}%
+     }{}
+     \ifthenelse{\value{a}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer B >
+     \ifthenelse{\value{b}=1 \and \value{gruppe}=2}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{B}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{lila}{\abcbox{\textbf{\underline{B}}}}}{}%
+        }{}%
+     \ifthenelse{\value{b}=1 \and \not \value{gruppe}=2}{\abcbox{B}}{}
+     \ifthenelse{\value{b}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer C >
+     \ifthenelse{\value{c}=1 \and \value{gruppe}=3}% c existent UND aktiv
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{C}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{rot}{\abcbox{\textbf{\underline{C}}}}}{}%
+         }{}%
+     \ifthenelse{\value{c}=1 \and \not \value{gruppe}=3}{\abcbox{C}}{}
+     \ifthenelse{\value{c}=0 \and \( \value{a}=1 \or \value{b}=1 \)}%
+        {%
+       \ifthenelse{\value{gruppe}=3}{\textcolor{rot}{\abcbox{---}}}{\abcbox{---}}%
+     }{}%
+     \ifthenelse{\value{a}=0 \and \value{b}=0 \and \value{c}=0}% weder a,b,c
+        {\abcbox{\textbf{\underline{C}}}}{}%
+     %^^A Kasten fuer D >
+     \ifthenelse{\value{d}=1 \and \value{gruppe}=4}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{D}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{orange}{\abcbox{\textbf{\underline{D}}}}}{}%
+         }{}%
+     \ifthenelse{\value{d}=1 \and \not \value{gruppe}=4}{\abcbox{D}}{}
+     \ifthenelse{\value{d}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer E >
+     \ifthenelse{\value{e}=1 \and \value{gruppe}=5}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{E}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{rosa2}{\abcbox{\textbf{\underline{E}}}}}{}%
+         }{}%
+     \ifthenelse{\value{e}=1 \and \not \value{gruppe}=5}{\abcbox{E}}{}
+     \ifthenelse{\value{e}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer F >
+     \ifthenelse{\value{f}=1 \and \value{gruppe}=6}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{F}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{lila2}{\abcbox{\textbf{\underline{F}}}}}{}%
+         }{}%
+     \ifthenelse{\value{f}=1 \and \not \value{gruppe}=6}{\abcbox{F}}{}
+     \ifthenelse{\value{f}=0}{\abcbox{---}}{}%
+     %^^A Kasten fuer G >
+     \ifthenelse{\value{g}=1 \and \value{gruppe}=7}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{G}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{rot2}{\abcbox{\textbf{\underline{G}}}}}{}%
+         }{}%
+     \ifthenelse{\value{g}=1 \and \not \value{gruppe}=7}{\abcbox{G}}{}
+     \ifthenelse{\value{g}=0}{\abcbox{---}}{}%
+      %^^A Kasten fuer H >
+     \ifthenelse{\value{h}=1 \and \value{gruppe}=8}%
+        {\ifthenelse{\value{gruppeninfo}=1}{\abcbox{\textbf{\underline{H}}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{orange2}{\abcbox{\textbf{\underline{H}}}}}{}%
+         }{}%
+     \ifthenelse{\value{h}=1 \and \not \value{gruppe}=8}{\abcbox{H}}{}
+     \ifthenelse{\value{h}=0}{\abcbox{---}}{}%
+     }%^^A Ende Gruppeninfo <
+     %%
+  \hfill
+  %^^A Projektinformationen schreiben >
+  \ifthenelse{\value{gruppeninfo}=0}{}%
+     Projekt:
+     {%^^A Beginn Gruppeninfo-Projekt >
+     %^^A Kasten fuer Projekt >
+     \ifthenelse{\value{projekt}=0}{\projektbox{---}}{}%
+     \ifthenelse{\value{projekt}=1 \and \value{projektbezug}=1}%
+        {\ifthenelse{\value{gruppeninfo}=1}%
+           {\textcolor{dunkelgrau}{\projektbox{Projekt}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{blau}{\projektbox{Pro}}}{}%
+        \hspace{1mm}}{}%
+  %^^A %\textcolor{blau}{\projektbox{Projekt}} \hspace{1mm}}{}%
+     \ifthenelse{\value{projekt}=1 \and \value{projektbezug}=0}%
+        {\ifthenelse{\value{gruppeninfo}=1}%
+           {\textcolor{dunkelgrau}{\projektbox{\keinprojekt}}}{}%
+         \ifthenelse{\value{gruppeninfo}=2}%
+           {\textcolor{gruen}{\projektbox{\keinprojekt}}}{}%
+        \hspace{1mm}}{}%
+     }%^^A Ende Gruppeninfo-Projekt <
+  \hfill
+     %^^A Angaben zur Gesamtpunktzahl schreiben >
+   \ifthenelse{\value{punktzahlkasten}=0}{}%
+     {%
+     \fbox{\fusszeilenstuetze \textbf{\aufgabenmarkeuse{} % Leerzeichen wichtig
+        \arabic{aufgabennummer}\,: % 
+        \thepunktesumme{} Punkte}}
+     }%
+  \end{minipage}%^^A Ende Aufgabenfussbalken
+  \par
+  %^^A %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  }%^^A Ende Punktesumme zeigen
+  {}%^^A sonst nix
+  \vspace{3mm}  
+}%^^A Aufgabenfusszeile zeigen Ende
+%^^A Minipage schließen, die fuer Loesungserzeugung geoeffnet wurde
+\ifthenelse{\value{aufgabenstellung}=0 \and% Wenn Aufgabenstellung und
+            \value{loesungen}=1% Loesungen ausgegeben werden
+           }%
+   {% Dann, Beginn
+   %\end{minipage} End Minipage
+   }%
+   {}%
+%^^A Zaehler, die nur fuer eine Aufgabe gelten wieder Ruecksetzten >
+\setcounter{punktesumme}{0}%
+%^^A Zaehler die Anzeigen, ob Befehle a, b, ab, abc, projekt benutzt wurden
+%^^A duerfen *nicht* hier auf null gesetzt werden, da sie von \nehme, ... 
+%^^A gebraucht werden 
+\addtocounter{aufgabennummer}{1}%^^A Aufgabennummer  der KA erhoehen 
+\setcounter{ohneeins}{0}%^^A Keine Aufgabe soll ausgeblendet werden
+\setcounter{ohnezwei}{0}%^^A Keine Aufgabe soll ausgeblendet werden 
+\setcounter{ohnedrei}{0}%^^A Keine Aufgabe soll ausgeblendet werden
+\setcounter{order}{0}%^^A Reihenfolge wieder auf null setzen
+}
+%^^A Ende Umgebung aufgabe %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% \begin{examaufgabe}
+% \end{examaufgabe}
+\newenvironment{examaufgabe}[6][]{%% Begin \begin
+\examinfo{#3}{#4}{#5}{#6}%
+% tableofcontents-header if WA,PF is switched
+\ifthenelse{\equal{#5}{PF}}{%
+    \ifthenelse{\theLatestMust=1}%
+               {}%
+               {\pagebreak\section*{Teil 1: Projekt-Pflichtaufgaben (\theTimeTotalPFOK{} Minuten)}\addtocontents{toc}{\vspace{3mm}\textbf{Teil 1: Projekt-Pflichtaufgaben} (\theTimeTotalPFOK{} Minuten)\par}}\setcounter{LatestMust}{1}%
+}{}%
+\ifthenelse{\equal{#5}{WA}}{%
+    \ifthenelse{\theLatestMust=2}%
+               {}%
+               {\pagebreak\section*{Teil 2: Wahlaufgaben (\theTimeTotalWAOKdisplay{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufgaben sind zu bearbeiten)}%
+                \addtocontents{toc}{\vspace{3mm}\textbf{Teil 2: Wahlaufgaben} (\theTimeTotalWAOKdisplay{} Minuten, \theNumberTotalWASelect{} von \theNumberTotalWAOK{} Aufg. bearbeiten)\par}}\setcounter{LatestMust}{2}%
+}{}%  
+% tableofcontents-header if KT,KL,ET is switched
+\ifthenelse{\equal{#4}{KT}}{%
+    \ifthenelse{\theLatestCategory=1}%
+               {}%
+               {\subsection*{Kältetechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Kältetechnik}\par}}\setcounter{LatestCategory}{1}%
+}{}%  
+\ifthenelse{\equal{#4}{KL}}{%
+    \ifthenelse{\theLatestCategory=2}%
+               {}%
+               {\subsection*{Klimatechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Klimatechnik}\par}}\setcounter{LatestCategory}{2}%
+}{}% 
+\ifthenelse{\equal{#4}{ET}}{%
+    \ifthenelse{\theLatestCategory=3}%
+               {}%
+               {\subsection*{Elektrotechnik}\addtocontents{toc}{\vspace{2mm}\hspace{5mm}\textbf{Elektrotechnik}\par}}\setcounter{LatestCategory}{3}%
+}{}%  
+% tableofcontents of problem
+\addtocontents{toc}{\hspace{10mm}Aufgabe \theaufgabennummer: #2 (#3 min)\dotfill Seite \thepage\par}
+% call aufgabe environment
+\ifthenelse{\value{ModeFinal}=1}%
+  {\begin{aufgabe}[#1]{#2 \hfill (#3 Minuten)}}% final
+  {\begin{aufgabe}[#1]{#2 \hfill \textcolor{gruen}{#3min #4 #5 #6}}}% draft
+%
+%--- 1: #1 --- 2: #2 --- 3: #3 --- 4: #4 --- 5: #5 --- 6: #6 ---
+%
+}%
+{%
+\end{aufgabe}%
+}%

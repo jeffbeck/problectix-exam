@@ -1,0 +1,100 @@
+% timecounter
+\newcounter{testredcounter}
+\newcounter{testredcounter_ok}
+\setcounter{testredcounter_ok}{1}
+\aufgabenmarkesetzen%
+
+% ??????
+\setcounter{teilaufnummerierung}{1}
+\setcounter{aufgabennummerierung}{1}
+%\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0mm}%
+
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{\footnotesize\schooluse}
+%\cfoot{\titelouse} % Seite
+\rfoot{\footnotesize\berufuse}
+
+
+\enlargethispage{8mm}
+
+\vspace{1mm}
+
+
+%\begin{center}\setlength{\fboxrule}{0.3mm}\setlength{\fboxsep}{2.5mm}
+%\framebox[\textwidth][s]{\rule[-2mm]{0mm}{6.4mm}%
+%\textbf{\titeluuse{} (\bereichuse{})\hspace*{\fill}Bearbeitungszeit: \theTimeTotalOKdisplay{} Minuten}%
+%}
+%\end{center}
+
+\begin{center}\setlength{\fboxrule}{0.3mm}\setlength{\fboxsep}{2.5mm}
+\framebox[\textwidth][s]{\rule[-2mm]{0mm}{6.4mm}%
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{innung.eps}
+  \end{minipage}
+  \begin{minipage}{0.5\linewidth}
+    \begin{center}
+      \vspace{5mm}\large
+      \textbf{Abschlussprüfung Teil 1}\\[3mm]
+      der Handwerkskammer\\
+      (schriftlicher Teil)\\
+      Baden Württemberg\\[3mm]
+      \textbf{\titeluuse{}}
+      \vspace{5mm}
+    \end{center}
+  \end{minipage}
+}
+\end{center}
+
+%\rule{\textwidth}{0.25mm}
+
+\vspace{10mm}
+
+\begin{center}
+    \vspace{-2mm}
+    \huge \textbf{\berufuse}
+    \vspace{-2mm}
+\end{center}
+%\rule{\textwidth}{0.25mm}
+
+\vspace{10mm}
+
+\begin{tabbing} %tabulator
+ \textbf{Bearbeitungszeit:} \quad\= 60 Minuten\\[2.5mm]
+ \textbf{Hilfsmittel:}  \> Nicht programmierbarer Taschenrechner\\
+                        \> Eingeführtes Tabellenbuch und Formelsammlung\\
+                        \> Zeichengeräte\\[2.5mm]
+\textbf{Bewertung:}     \> Alle Aufgaben sind zu bearbeiten und werden gleich gewichtet.\\[2.5mm]
+\textbf{Zu beachten:}   \> Die Prüfungsunterlagen sind vor Beginn der Prüfung auf Vollständigkeit\\                         \> zu überprüfen.\\
+\end{tabbing}
+
+
+\begin{center}
+\begin{minipage}{130mm}
+\tableofcontents
+\end{minipage}
+%\begin{tabular*}{\textwidth}[t]{|p{\textwidth/5}|@{\extracolsep{\fill}} l|} \hline
+
+\bigskip
+%\vfill
+
+\begin{tabular}{|l|p{120mm}|} \hline
+\textbf{\rule[-3mm]{0mm}{9mm}Name, Vorname:\,\,} &  \xlsg{\Large\textbf{Lösung}}\\ \hline
+\textbf{\rule[-3mm]{0mm}{9mm}Klasse:}        &  \\ \hline
+\end{tabular}
+
+\end{center}
+
+
+\newpage
+% Set Headers
+\lhead{\footnotesize\titeluuse{}, \titelouse{}}
+\chead{}
+\rhead{Name: \lll[50][l]{Lösung}}
+\lfoot{\footnotesize\schooluse}
+%\cfoot{\titelouse} % Seite
+\rfoot{\footnotesize\berufuse}
+
+
