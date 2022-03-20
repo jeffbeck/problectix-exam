@@ -633,8 +633,8 @@
 \addtocontents{toc}{\hspace{10mm}Aufgabe \theaufgabennummer: #2 (#3)\dotfill Seite \thepage\par}
 % call aufgabe environment
 \ifthenelse{\value{ModeFinal}=1}%
-  {\begin{aufgabe}[#1]{#2 \hfill (#3 Minuten)}}% final
-  {\begin{aufgabe}[#1]{#2 \hfill \textcolor{gruen}{#3 #4 #5 #6}}}% draft
+  {\begin{aufgabe}[#1]{#2 \hfill (#3)}}% final
+  {\begin{aufgabe}[#1]{#2 \hfill \textcolor{gruen}{#3 --- Draft: #4 #5 #6}}}% draft
 %
 %--- 1: #1 --- 2: #2 --- 3: #3 --- 4: #4 --- 5: #5 --- 6: #6 ---
 %
