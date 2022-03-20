@@ -215,53 +215,6 @@
 \newcommand{\examinfo}[4]{
 % step a counter to check if this command is issued in every aufgabe
 \stepcounter{ExamInfo}
-% step other counters 
-% time counter in min
-\addtocounter{TimeTotal}{#1}
-% KT/KL/ET
-\ifthenelse{\equal{#2}{KT}}{\addtocounter{TimeTotalKT}{#1}}{} 
-\ifthenelse{\equal{#2}{KL}}{\addtocounter{TimeTotalKL}{#1}}{} 
-\ifthenelse{\equal{#2}{ET}}{\addtocounter{TimeTotalET}{#1}}{} 
-%
-% WA/PF
-\ifthenelse{\equal{#3}{WA}}{\addtocounter{TimeTotalWA}{#1}}{} 
-\ifthenelse{\equal{#3}{PF}}{\addtocounter{TimeTotalPF}{#1}}{} 
-% Minuten Wahlaufgaben OK 
-\ifthenelse{\equal{#3}{WA}}{%
-    \ifthenelse{\value{TimeWAOK}=#1}{}{\stepcounter{TimeWAError}}
-}{} 
-% Anzahl Wahlaufgaben OK 
-\ifthenelse{\equal{#3}{WA}}{\stepcounter{NumberTotalWA}}{}
-%
-% TopicTime counter
-\ifthenelse{\equal{#4}{HLOGP}}{\addtocounter{TopicTimeHLOGP}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{HX}}{\addtocounter{TopicTimeHX}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{RI}}{\addtocounter{TopicTimeRI}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{KTFUNKTION}}{\addtocounter{TopicTimeKTFUNKTION}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{WU}}{\addtocounter{TopicTimeWU}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{VERDICHTER}}{\addtocounter{TopicTimeVERDICHTER}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{LUFT}}{\addtocounter{TopicTimeLUFT}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{MOP}}{\addtocounter{TopicTimeMOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{ABTAUUNG}}{\addtocounter{TopicTimeABTAUUNG}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{COP}}{\addtocounter{TopicTimeCOP}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{KUEHLTURM}}{\addtocounter{TopicTimeKUEHLTURM}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{ROHR}}{\addtocounter{TopicTimeROHR}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{REGLER}}{\addtocounter{TopicTimeREGLER}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{SCHALTUNG}}{\addtocounter{TopicTimeSCHALTUNG}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{SCHALTPLAN}}{\addtocounter{TopicTimeSCHALTPLAN}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{MOTOR}}{\addtocounter{TopicTimeMOTOR}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{DREHSTROM}}{\addtocounter{TopicTimeDREHSTROM}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{ETSCHUTZ}}{\addtocounter{TopicTimeETSCHUTZ}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{ETBAUTEILE}}{\addtocounter{TopicTimeETBAUTEILE}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{KREISLAUF}}{\addtocounter{TopicTimeKREISLAUF}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{PRESSOSTAT}}{\addtocounter{TopicTimePRESSOSTAT}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{REFRIG}}{\addtocounter{TopicTimeREFRIG}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{GESLAENGE}}{\addtocounter{TopicTimeGESLAENGE}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{ISOMETRIE}}{\addtocounter{TopicTimeISOMETRIE}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{WAERME}}{\addtocounter{TopicTimeWAERME}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{ETBASIS}}{\addtocounter{TopicTimeETBASIS}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{ETSYMBOLE}}{\addtocounter{TopicTimeETSYMBOLE}{#1}\stepcounter{NumberTopicsCounted}}{} 
-\ifthenelse{\equal{#4}{ETKOSTEN}}{\addtocounter{TopicTimeETKOSTEN}{#1}\stepcounter{NumberTopicsCounted}}{} 
 }
 
 
@@ -681,7 +634,7 @@
 % call aufgabe environment
 \ifthenelse{\value{ModeFinal}=1}%
   {\begin{aufgabe}[#1]{#2 \hfill (#3 Minuten)}}% final
-  {\begin{aufgabe}[#1]{#2 \hfill \textcolor{gruen}{#3min #4 #5 #6}}}% draft
+  {\begin{aufgabe}[#1]{#2 \hfill \textcolor{gruen}{#3 #4 #5 #6}}}% draft
 %
 %--- 1: #1 --- 2: #2 --- 3: #3 --- 4: #4 --- 5: #5 --- 6: #6 ---
 %
