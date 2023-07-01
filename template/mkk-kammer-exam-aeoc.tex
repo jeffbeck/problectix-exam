@@ -293,6 +293,9 @@
 % \projectanhang
 \newcommand{\projectanhang}[3][]{%
    %% counting the references in the main material
+   %% #1 includgraphicsoptions
+   %% #2 Title
+   %% #3 included grephics file
    \stepcounter{mainpage}%
    \Alph{mainpage}% this is printed
    \AtEndDocument{%
@@ -311,7 +314,8 @@
       \begin{center}\label{#3}\label{\Alph{apppage}}
       \ifthenelse{\equal{#1}{}}{
           \includepsfraggraphics
-            [width=\textwidth,height=\textheight,keepaspectratio]{../projects/\projectname/#3}
+            [width=\textwidth,height=\textheight,keepaspectratio]
+            {../projects/\projectname/#3}
       }{\includepsfraggraphics[#1]{../projects/\projectname/#3}}
       \end{center}
       \vspace*{\fill}
